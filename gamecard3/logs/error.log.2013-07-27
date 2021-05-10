@@ -1,0 +1,5 @@
+2013-07-27 13:37:00,606 ERROR [EmailUtil.java:121] ---- Sending the email to the following server failed : smtp.qq.com:25
+2013-07-27 13:38:06,961 ERROR [EmailUtil.java:121] ---- Sending the email to the following server failed : smtp.qq.com:25
+2013-07-27 13:38:32,339 ERROR [EmailUtil.java:121] ---- Sending the email to the following server failed : smtp.qq.com:25
+2013-07-27 13:40:54,203 ERROR [EmailUtil.java:121] ---- Sending the email to the following server failed : smtp.qq.com:25
+2013-07-27 14:18:00,190 ERROR [EmailUtil.java:121] ---- Sending the email to the following server failed : smtp.qq.com:25

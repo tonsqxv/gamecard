@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+
+	default-lazy-init="true">
+
+
+
+	<description>数据库相关配置文件 </description>
+
+
+
+	<!-- 定义受环境影响易变的变量 -->
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+
+		<property name="ignoreResourceNotFound" value="true" />
+
+		<property name="locations">
+
+			<list>
+
+				<value>classpath*:/jdbc.properties</value>
+
+			</list>
+
+		</property>
+
+	</bean>
+ 
+ 
+	<!-- 数据库连接池 -->
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close" lazy-init="true">
+
+		<property name="driverClass" value="${jdbc.driver}" />
+
+		<property name="jdbcUrl" value="${jdbc.url}" />
+
+		<property name="user" value="${jdbc.username}" />
+
+		<property name="password" value="${jdbc.password}" />
+
+		<property name="initialPoolSize" value="10" />
+
+		<property name="minPoolSize" value="10" />
+
+		<property name="maxPoolSize" value="60" />
+
+		<property name="acquireRetryAttempts" value="-1" />
+
+		<property name="maxIdleTime" value="600" />
+
+		<property name="idleConnectionTestPeriod" value="60" />
+
+	 
+
+	</bean>
+
+
+
+	<!-- 事务管理器配置,单数据源事务 -->
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+
+		<property name="sessionFactory" ref="sessionFactory" />
+
+	</bean>
+
+ 
+
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor"
+		lazy-init="true" />
+
+
+	<!-- Hibernate配置  
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.annotation.AnnotationSessionFactoryBean">
+   -->
+   
+<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		
+ <property name="dataSource" ref="dataSource" />	 
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.showSQL}</prop>
+				<prop key="hibernate.format_sql">${hibernate.showSQL}</prop>                
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">/ehcache.xml</prop>				
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.jdbc.fetch_size">50</prop>  
+                <prop key="hibernate.jdbc.batch_size">25</prop>  
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+                <prop key="jdbc.use_scrollable_resultset">false</prop>
+                
+			</props>
+		</property>		
+		<property name="packagesToScan" value="com.macower.*.entity" />
+
+ </bean>
+ <!-- 使用annotation定义事务 -->
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+  
+</beans>

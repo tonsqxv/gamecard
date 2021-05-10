@@ -1,0 +1,74 @@
+.search {
+    background-image:url(../../images/common/search.gif);
+}
+.add {
+    background-image:url(../../images/common/add.gif);
+}
+.edit {
+    background-image:url(../../images/common/edit.gif);
+}
+.delete {
+    background-image:url(../../images/common/delete.gif);
+}
+.save {
+    background-image:url(../../images/common/save.gif);
+}
+.reset {
+    background-image:url(../../images/common/reset.gif);
+}
+.detail {
+    background-image:url(../../images/common/detail.gif);
+}
+.apply {
+    background-image:url(../../images/common/apply.png);
+}
+.close {
+    background-image:url(../../images/common/close.gif);
+}
+.revert {
+    background-image:url(../../images/common/revert.gif);
+}
+.stop {
+    background-image:url(../../images/common/stop.gif);
+}
+.download {
+    background-image:url(../../images/common/download.gif);
+}
+.export {
+    background-image:url(../../images/common/export.gif);
+}
+.goto {
+    background-image:url(../../images/common/goto.png);
+}
+.copy {
+    background-image:url(../../images/common/copy.gif);
+}
+.backto {
+    background-image:url(../../images/common/backto.png);
+}
+.checked {
+    background-image:url(../../images/common/checked.gif);
+}
+.unchecked {
+    background-image:url(../../images/common/unchecked.gif);
+}
+.eye {
+    background-image:url(../../images/common/eye.png);
+}
+.lock {
+    background-image:url(../../images/common/lock.png);
+}
+.next {
+    background-image:url(../../images/common/next.png);
+}
+.pre {
+    background-image:url(../../images/common/pre.png);
+}
+.user {
+    background-image:url(../../images/common/user.png);
+}
+.useradd {
+    background-image:url(../../images/common/useradd.gif);
+}
+
+

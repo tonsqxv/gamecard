@@ -1,0 +1,11 @@
+/ApplicationResources.properties
+/ApplicationResources_zh.properties
+/applicationContext-jdbc.xml
+/applicationContext.xml
+/com
+/ehcache.xml
+/jdbc.properties
+/jdbc3.properties
+/log4j.properties
+/messages.properties
+/springmvc-servlet.xml

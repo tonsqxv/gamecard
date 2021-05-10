@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+
+
+	<mapping>
+		<path>/index</path>
+		<decorator>/WEB-INF/view/common/decorator4KHZX.jsp</decorator>
+	</mapping>
+	<!-- 产品 -->
+	<mapping>
+		<path>/product/**</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<!-- 会员 -->
+	<mapping>
+		<path>/member/login</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/member/register</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/member/findPassword</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/member/toMyAccount</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/member/changePassword</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/member/changMyPassword</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	
+	
+	<!-- 订单 -->
+	<mapping>
+		<path>/order/toMyOrder</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/orderDetail/*/orderDetail</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	
+	<!-- 查询物流 -->
+	<mapping>
+		<path>/order/trackShipment</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	
+	<!-- 帮助 -->
+	<mapping>
+		<path>/help/**</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/help/contact</path>
+		<decorator>/WEB-INF/view/common/decorator4KHZX.jsp</decorator>
+	</mapping>
+	
+	<!-- 留言 -->
+	<mapping>
+		<path>/contact/message</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	
+	<!-- 支付 -->
+	<mapping>
+		<path>/pay/prePayForm</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/pay/APIError</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/pay/APIError</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/pay/payError</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/pay/payAccountLogin</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/pay/confirmPayDetail</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	
+
+</sitemesh>  
+
