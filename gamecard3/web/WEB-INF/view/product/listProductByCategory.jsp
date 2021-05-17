@@ -64,7 +64,7 @@
 		          			</div><!--/row-fluid-->
 		           			 <hr>
 		          		</c:when>
-		          		<c:when test="${index == page.totalSize}">
+		          		<c:when test="${index == fn:length(page.data)}">
 		          			</div><!--/row-fluid-->
 		           			 <hr>
 		          		</c:when>

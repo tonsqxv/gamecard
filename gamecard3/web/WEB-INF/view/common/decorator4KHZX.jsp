@@ -12,9 +12,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>n3ds-card<sitemesh:write property='title'/></title>
-
+	<!-- n3ds-card  mobledeal -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="google-translate-customization" content="1e73dcaa81aa4ac7-61a6e2a043015e7a-g53185def3341f4dc-11"></meta>
+   
     
      <!-- Bootstrap -->
     <link href="<%=basePathforHead %>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -22,8 +23,14 @@
  	
  	<script src="<%=basePathforHead %>/assets/js/common/jquery-1.8.2.min.js"></script>
     <script src="<%=basePathforHead %>/assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript" language="javascript">
-   
+    function googleTranslateElementInit() {
+    	  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+    	}
+    
 	function addToCart(productId,amount,unitPrice,color,size){
    		$.ajax({
    				type:"post",
@@ -70,21 +77,12 @@
 								</c:if></a>
 						</li>
 	            </ul>
+	            
 	            <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-               <!-- 
-                <ul class="nav pull-right">
-                      <li class="divider-vertical"></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MyAccount <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="<%=basePathforHead %>/product/toMyCart" class="navbar-link">MyCart</a></li>
-                          <li><a href="<%=basePathforHead %>/order/toMyOrder" class="navbar-link">MyOrders</a></li>
-                          <li><a href="<%=basePathforHead %>/member/toMyAccount" class="navbar-link">MyAccount</a></li>
-                        </ul>
-                      </li>
-                 </ul>
-                 -->
+               
+               
                  <p class="navbar-text pull-right">
+                 		
 						<c:if test="${empty member}">
 							<a href="<%=basePathforHead %>/member/login" class="navbar-link">Sign in</a>&nbsp;&nbsp;
 							<a href="<%=basePathforHead %>/member/register" class="navbar-link">Register</a>&nbsp;&nbsp;
@@ -98,8 +96,10 @@
 		               	<c:if test="${!empty member}">
 		               		<a href="<%=basePathforHead %>/member/logout" class="navbar-link">Sign out</a>&nbsp;&nbsp;
 		               	</c:if>
+		                
 	            </p>
-	           
+	            <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	            <div class="pull-right" style="padding-top:8px;" id="google_translate_element" ></div>
                
           </div><!--/.nav-collapse -->
         </div>

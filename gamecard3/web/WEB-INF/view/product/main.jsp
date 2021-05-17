@@ -68,13 +68,12 @@
           </c:if>
           
           <h4>Featured Products</h4>
-          总记录：${page.totalSize },分页大小：${page.pageSize }
           <hr>
           <!-- 产品展示 -->
           <c:set var="index" value="1"></c:set>
-          <c:forEach items="${page.data }" var="card">
+          <c:forEach items="${page.data }" var="card" varStatus="status">
           	 <c:if test="${index%4==1 }">
-	    	   <div class="row-fluid">
+	    		<div class="row-fluid">
 	    	 </c:if>
              <div class="span3">
 	              <a href="<%=basePath %>/product/${card.id}/productDetail" class="thumbnail">
@@ -103,7 +102,7 @@
 	          			</div><!--/row-fluid-->
 	           			 <hr>
 	          		</c:when>
-	          		<c:when test="${index == page.totalSize}">
+	          		<c:when test="${index == fn:length(page.data)}">
 	          			</div><!--/row-fluid-->
 	           			 <hr>
 	          		</c:when>

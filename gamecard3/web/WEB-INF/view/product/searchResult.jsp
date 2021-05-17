@@ -26,7 +26,6 @@
    		<div class="span2 offset1" >
    					<%@include file="left.jsp" %>
    		</div><!--/span2-->
-   		
     	<div class="span8">
           <h4><font color="orange"></font></h4>
           <hr>
@@ -63,7 +62,7 @@
 				          			</div><!--/row-fluid-->
 				           			 <hr>
 				          		</c:when>
-				          		<c:when test="${index == page.totalSize}">
+				          		<c:when test="${index == fn:length(page.data)}">
 				          			</div><!--/row-fluid-->
 				           			 <hr>
 				          		</c:when>
