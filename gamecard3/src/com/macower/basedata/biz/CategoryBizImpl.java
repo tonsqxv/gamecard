@@ -39,7 +39,9 @@ public class CategoryBizImpl extends BaseBiz implements CategoryBiz {
 		if(count > 0){
 			throw new BizException(obj.getName()+"已经存在") ;
 		}
-		
+		if(obj.getParentId() != null && obj.getParentId() == 0){
+			obj.setParentId(null) ;
+		}
 		categoryDao.save(obj) ;
 
 	}

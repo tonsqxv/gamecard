@@ -461,6 +461,13 @@ public class PayAction {
 			addressLog.setZipcode(address.getPostalCode()) ;
 			addressLog.setCountryName(address.getCountryName()) ;
 			addressLog.setOrderId(prePayOrderId) ;
+			//查询原来是否有记录
+			AddressLog param = new AddressLog() ;
+			param.setOrderId(prePayOrderId) ;
+			List<AddressLog> logs =  this.addressLogBiz.findBy(param) ;
+			if(logs != null){
+				this.addressLogBiz.deleteBatch(logs) ;
+			}
 			this.addressLogBiz.save(addressLog) ;
 			
 		}catch (Exception e) {

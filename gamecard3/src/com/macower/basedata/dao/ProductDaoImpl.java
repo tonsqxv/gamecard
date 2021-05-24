@@ -55,7 +55,7 @@ public class ProductDaoImpl extends BaseEntityDao<Product>{
 			dc.add(Restrictions.eq("isDiscount", obj.getIsDiscount())) ;
 		}
 		dc.add(Restrictions.eq("downFlag", 0)) ;
-		dc.addOrder(Order.desc("id")) ;
+		dc.addOrder(Order.asc("sortNo")) ;
 		
 		return this.findPageBy(dc,pageNo,pageSize) ;
 	}

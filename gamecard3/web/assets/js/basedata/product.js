@@ -260,6 +260,7 @@ Ext.onReady(function(){
 			                              {header:"分类",width:150,dataIndex:"categoryName"},
 			                              {header:"产品简称",width:200,dataIndex:"shortName"},
 			                              {header:"产品全名称",width:200,dataIndex:"productName"},
+			                              {header:"品牌",width:200,dataIndex:"brand"},
 			                              {header:"在线状态",renderer:downFlagRenderer,dataIndex:"downFlag"},
 			                              {header:"主图片",dataIndex:"mainImgPath"},
 			                              {header:"主图片描述",dataIndex:"mainImgDesc"},
@@ -1589,7 +1590,7 @@ Ext.onReady(function(){
 	}
 	
 	/*****************编辑产品详情******************/
-	var descForm = new Ext.form.FormPanel({region:"center",height:300,autoScroll:true,frame:true,fileUpload:false,autoWidth:true,timeout:300
+	var descForm = new Ext.form.FormPanel({region:"center",height:600,autoScroll:true,frame:true,fileUpload:false,autoWidth:true,timeout:300
 		,items: [
 			new Ext.Panel({layout:"column"
 				,items: [

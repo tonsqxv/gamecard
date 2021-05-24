@@ -75,14 +75,20 @@
 	                         <span id="item_productName_${shopItem.id }">${shopItem.productName }</span>
 	                        </a>
 	                        <c:choose>
-								<c:when test="${!empty shopItem.color and empty shopItem.size}">
+								<c:when test="${!empty shopItem.color}">
+									<c:if test="${empty shopItem.size }">
 									<p><b>color</b>:${shopItem.color}</p>
+									</c:if>
 								</c:when>
-								<c:when test="${empty shopItem.color and !empty shopItem.size}">
+								<c:when test="${empty shopItem.color}">
+									<c:if test="${!empty shopItem.size }">
 									<p><b>size</b>:${shopItem.size}</p>
+									</c:if>
 								</c:when>
-								<c:when test="${!empty shopItem.color and !empty shopItem.size}">
+								<c:when test="${!empty shopItem.color}">
+									<c:if test="${!empty shopItem.size }">
 									<p><b>color</b>:${shopItem.color}&nbsp;<b>size</b>:${shopItem.size}</p>
+									</c:if>
 								</c:when>
 								<c:otherwise>
 								</c:otherwise>
@@ -136,6 +142,11 @@
               </tr>
               <tr>
                 <td colspan="12">
+                  <p align="right">(Optional)<strong>Coupon Code:&nbsp;&nbsp;  </strong><input id="discountCode" type="text" name="discountCode" /></p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="12">
                   <p align="right"><button onclick="javascript:gernarateOrder();" class="btn  btn-warning" type="button"><strong>PROCEED TO CHECKOUT</strong></button></p>
                 </td>
               </tr>
@@ -158,15 +169,15 @@
      <script type="text/javascript">  
     
  	
-     //参数说明 单价，id
+     //参数说明 单价，id 
     function  amountChange(unitPrice,id){
     	
-    	 var obj = document.getElementById("item_amount_"+id); //定位id
-    	 var index = obj.selectedIndex; // 选中索引
-    	 var value = obj.options[index].value; // 选中值
+    	 var obj = document.getElementById("item_amount_"+id); //定位id 
+    	 var index = obj.selectedIndex; // 选中索引 
+    	 var value = obj.options[index].value; // 选中值 
     	 var unitTotalPriceId = "item_unitTotalPrice_"+id ;
-    	 
-    	 //记录原来的总金额
+    	  
+    	 //记录原来的总金额 
     	 var oldunitTotalPrice = document.getElementById(unitTotalPriceId).innerHTML ;
     	 
     	 document.getElementById(unitTotalPriceId).innerHTML = dealTotalPrice((value*unitPrice).toFixed(2)) ;
@@ -181,7 +192,7 @@
 
      }
      
-     //生成订单
+     //生成订单 
      function gernarateOrder(){
     	 //判断是否有购物车记录  判断总金额是否为0
     	 var totalPrice =document.getElementById("totalPrice").innerHTML ;
@@ -189,17 +200,43 @@
     	 if(parseFloat(totalPrice) <= 0){
     		 return ;
     	 }
+    	 //校验折扣码是否有效 
+    	 var discountCode = trim($("#discountCode").val());	
+    	 if(discountCode != ""){
+    		 $.ajax({
+	 				type:"post",
+	 				dataType : "json",  
+	 		        url:"<%=basePath %>/discode/validDiscode",
+	 		        data: {"discountCode":discountCode},
+	 		        success:function(data){
+	 		    	   if(data.success == 'ok'){
+	 		    		  //需要传递的参数 ：1：productId  2：amount 3:shopItemId 购物车编号  4:折扣码 
+	 		         	 $("#gernarateOrderForm").submit() ;
+	 		    	   }else if(data.success == 'no'){
+	 		    		   alert('coupon code error');
+	 		    		   return ;
+	 		    	   }else if(data.success == '2'){
+	 		    		   alert('coupon code has been used.');
+	 		    		   return ;
+	 		    	   }else if(data.success == '3'){
+	 		    		   alert('coupon code has expired');
+	 		    		   return ;
+	 		    	   }
+	 		       }  		    	   
+ 				});    		
+    	 }else{
+        	 //需要传递的参数 ：1：productId  2：amount 3:shopItemId 购物车编号  4:折扣码 
+        	 $("#gernarateOrderForm").submit() ;
+    	 }
     	
-    	 //需要传递的参数 ：1：productId  2：amount 3:shopItemId 购物车编号
-    	 $("#gernarateOrderForm").submit() ;
      }
      
      function deleteItem(id,unitPrice){
-    	 var obj = document.getElementById("item_amount_"+id); //定位id
-    	 var index = obj.selectedIndex; // 选中索引
-    	 var value = obj.options[index].value; // 选中值
+    	 var obj = document.getElementById("item_amount_"+id); //定位id 
+    	 var index = obj.selectedIndex; // 选中索引 
+    	 var value = obj.options[index].value; // 选中值 
     	 var unitTotalPriceId = "item_unitTotalPrice_"+id ;
-    	//记录要删除记录的总金额
+    	//记录要删除记录的总金额 
     	 var deleteUnitTotalPrice = document.getElementById(unitTotalPriceId).innerHTML ;
     	 var oldTotalPrice =document.getElementById("totalPrice").innerHTML ;
     	 var newTotalPrice = add(oldTotalPrice,-deleteUnitTotalPrice) ;
@@ -217,7 +254,7 @@
 		    		 // var text = ${fn:length(memberNotLoginShopItems)} ;
 		    		 // document.getElementById("cartItemsSun").innerHTML = text ;
 		    		 
-		    		 //删除后更新总金额
+		    		 //删除后更新总金额 
 	    	    	 document.getElementById("totalPrice").innerHTML = newTotalPrice ;
 		    		 
 		    	   }
@@ -226,7 +263,7 @@
     	 
      }
      
-		//计算相加   参数是div里的innerHTML
+		//计算相加   参数是div里的innerHTML 
      function add(arg1,arg2){     
     	 var r1,r2,m;    
     	 try{
@@ -241,7 +278,7 @@
     		}     
     	m=Math.pow(10,Math.max(r1,r2))     
     	var total =  ((arg1*m+arg2*m)/m).toFixed(2);   
-    	//对最后的结果做处理
+    	//对最后的结果做处理 
     	total = dealTotalPrice(total) ;
     	
     	return total ;

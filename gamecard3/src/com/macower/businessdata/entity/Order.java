@@ -173,6 +173,8 @@ public class Order extends BaseEntity{
 	@Column(name="sycn_flag")
 	private Integer sycnFlag ;
 	
+	@Column(name="discode")
+	private String discode ;
 	
 	public Long getId() {
 		return id;
@@ -560,6 +562,14 @@ public class Order extends BaseEntity{
 
 	public void setSycnFlag(Integer sycnFlag) {
 		this.sycnFlag = sycnFlag;
+	}
+
+	public String getDiscode() {
+		return discode;
+	}
+
+	public void setDiscode(String discode) {
+		this.discode = discode;
 	}
 
 

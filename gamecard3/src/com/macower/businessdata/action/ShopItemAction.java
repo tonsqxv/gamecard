@@ -59,7 +59,6 @@ public class ShopItemAction {
 				}else{
 					obj.setSessionId(sessionId) ;
 					obj.setCreateTm(new Date()) ;
-					System.out.println(obj.getCode());
 					shopItemBiz.save(obj);
 				}
 				
@@ -83,8 +82,8 @@ public class ShopItemAction {
 			
 			value = "ok";
 		} catch (Exception e) {
+			e.printStackTrace() ;
 			value = "no";
-			
 		}
 		map.put("success", value);
 		JsonUtils.returnJson(response, map);

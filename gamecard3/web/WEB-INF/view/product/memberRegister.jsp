@@ -184,7 +184,7 @@ function verfiyRePass(){
 		   return true;
 	   }
 }
-//校验姓
+//校验姓 
 function verfiyFirstName(){	
 	 var firstName = trim($("#firstName").val());		  
 	   if(firstName=="" ){
@@ -198,7 +198,7 @@ function verfiyFirstName(){
 	   }
 }
 
-//校验名字
+//校验名字 
 function verfiyLastName(){	
 	 var lastName = trim($("#lastName").val());		  
 	   if(lastName=="" ){
@@ -212,7 +212,7 @@ function verfiyLastName(){
 	   }
 }
 
-//提交表单
+//提交表单 
 function verifySubmit(){
 	var email = trim($("#email").val());		         
     if(email == ""){

@@ -41,7 +41,12 @@ public class TaskEmailTimerTask extends TimerTask{
 
 	@Override
 	public void run() {
-
+		try {
+			//等待10秒
+			Thread.sleep(10000) ;
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		DBManager dbManger = new DBManager();
 		try {
 			// 根据任务配置查找目标客户

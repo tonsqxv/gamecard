@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import com.macower.businessdata.entity.Member;
 import com.macower.businessdata.entity.Order;
+import com.macower.core.util.StringUtils;
 
 public class MailTpl {
 
@@ -98,7 +99,7 @@ public class MailTpl {
 	public String getDispatchMailTpl(Order order) {
 		StringBuffer msg = new StringBuffer();
 		msg.append("<html>");
-		msg.append(formateDate2(new Date())+",N3DS-card &lt;servicen3dscard@gmail.com&gt; wrote:") ;
+		msg.append(formateDate2(new Date())+",n3ds-card &lt;servicen3dscard@gmail.com&gt; wrote:") ;
 		msg.append("<div style='PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 20px; PADDING-TOP: 0px'>");
 		msg.append("<h2 style='FONT-SIZE: 22px; MIN-HEIGHT: 30px; COLOR: #cc6600; BORDER-BOTTOM: gray 1px dashed'>");
 		msg.append("Order Status Changed</h2>");
@@ -131,7 +132,7 @@ public class MailTpl {
 		msg.append(lastName + firstName+" "+order.getStreet1()+" "+street2+order.getCity()+", "+order.getState()+" "+order.getZipCode()+" "+order.getCountryName());
 		
 		msg.append("<h3 style='FONT-SIZE: 13px; COLOR: #cc6600'>Shipment Tracking Numbers / Links</h3>");
-		if (order.getShippingOptionAmount() == 0) {
+		if (StringUtils.isEmpty(order.getShippingNo())) {
 			msg.append("No tracking numbers are assigned to your order yet.");
 		} else {
 			msg.append(" Your tracking number is :" + order.getShippingNo());
@@ -162,7 +163,7 @@ public class MailTpl {
 	public String getPaiedMailTpl(Order order) {
 		StringBuffer msg = new StringBuffer();
 		msg.append("<html>");
-		msg.append(formateDate2(new Date())+",N3DS-card &lt;servicen3dscard@gmail.com&gt; wrote:") ;
+		msg.append(formateDate2(new Date())+",n3ds-card &lt;servicen3dscard@gmail.com&gt; wrote:") ;
 		msg.append("<div style='PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 20px; PADDING-TOP: 0px'>");
 		msg.append("<h2 style='FONT-SIZE: 22px; MIN-HEIGHT: 30px; COLOR: #cc6600; BORDER-BOTTOM: gray 1px dashed'>");
 		msg.append("Order Status Changed</h2>");
@@ -223,7 +224,23 @@ public class MailTpl {
 		return  new SimpleDateFormat("'On' EEE,MMM dd,yyyy, 'at' h:mm a",Locale.ENGLISH).format(new Date());
 		
 	}
-	
+
+	public String getDiscodeSendTpl(String discode) {
+		StringBuffer msg = new StringBuffer();
+		msg.append("<html>");
+		msg.append(formateDate2(new Date())+",n3ds-card &lt;servicen3dscard@gmail.com&gt; wrote:") ;
+		msg.append("<div style='PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 20px; PADDING-TOP: 0px'>");
+		msg.append("<h2 style='FONT-SIZE: 22px; MIN-HEIGHT: 30px; COLOR: #cc6600; BORDER-BOTTOM: gray 1px dashed'>");
+		msg.append("Coupon Code For Customer</h2>");
+		
+		msg.append("<p>Thanks for buying the products from our website, your Coupon Code is <b><font color='#cc6600'>"+discode+"</font></b>, enter coupon code when you place an order, we will give you a discount.</p>") ;
+		msg.append("<p><a href='http://www.n3ds-card.com'>www.n3ds-card.com</a></p>");
+		msg.append("<p>&nbsp;</p></div>");
+		msg.append("</html>");
+		
+		return msg.toString() ;
+	}
+
 	
 
 

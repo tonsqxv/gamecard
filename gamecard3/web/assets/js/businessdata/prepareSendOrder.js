@@ -356,6 +356,30 @@ Ext.onReady(function(){
 							items : [{
 									xtype:"textfield",
 									width:800,
+									name:"name",
+									fieldLabel:"收件人"
+							}]
+						},{
+							xtype : "panel",
+							columnWidth : 1,
+							labelWidth : 150,
+							labelAlign : "left",
+							layout : "form",
+							items : [{
+									xtype:"textfield",
+									width:800,
+									name:"phone",
+									fieldLabel:"联系电话"
+							}]
+						},{
+							xtype : "panel",
+							columnWidth : 1,
+							labelWidth : 150,
+							labelAlign : "left",
+							layout : "form",
+							items : [{
+									xtype:"textfield",
+									width:800,
 									name:"address",
 									fieldLabel:"买家收货地址"
 							}]
@@ -414,10 +438,12 @@ Ext.onReady(function(){
 			}else{
 				street2 = ","+street2+" " ;
 			}
-			var address = record.data.lastName+" "+record.data.firstName+" "+record.data.street1+" "+street2+record.data.city+", "+record.data.state+" "+record.data.zipCode+" "+record.data.countryName ;
+			var address = record.data.street1+" "+street2+record.data.city+", "+record.data.state+" "+record.data.zipCode+" "+record.data.countryName ;
+			detailForm.getForm().findField("phone").setValue(record.data.phoneNum) ;
+			detailForm.getForm().findField("name").setValue(record.data.lastName+" "+record.data.firstName) ;
 			detailForm.getForm().findField("address").setValue(address) ;
 			detailForm.getForm().findField("memberMessage").setValue(record.data.memberMessage) ;
-			detailForm.getForm().findField("addressLog").setValue(record.data.lastName+" "+record.data.firstName+" "+record.data.addressLog) ;
+			detailForm.getForm().findField("addressLog").setValue(record.data.addressLog) ;
 		} else if (records.length < 1) {
 			Ext.Msg.alert("提示","请选择一笔数据行");
 		} else if (records.length > 1) {

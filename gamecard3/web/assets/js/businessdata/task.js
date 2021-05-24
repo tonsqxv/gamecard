@@ -105,6 +105,12 @@ Ext.onReady(function(){
 			value = "游客" ;
 		}else if(v == 3){
 			value = "会员" ;
+		}else if(v == 4){
+			value = "目标客户-折扣码" ;
+		}else if(v == 5){
+			value = "游客-折扣码" ;
+		}else if(v == 6){
+			value = "会员-折扣码" ;
 		}
 		return value ;
 	}
@@ -228,7 +234,7 @@ Ext.onReady(function(){
 					items : [{
 							xtype:"combo",
 							hiddenName:"taskType",
-							store:new Ext.data.SimpleStore({data: [['1','目标客户'],['2','游客'],['3','会员']], fields: ['key','value']}),
+							store:new Ext.data.SimpleStore({data: [['1','目标客户'],['2','游客'],['3','会员'],['4','目标客户-折扣码'],['5','游客-折扣码'],['6','会员-折扣码']], fields: ['key','value']}),
 							valueField:"key",
 							displayField:"value",
 							width:150,

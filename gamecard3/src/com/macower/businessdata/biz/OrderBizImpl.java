@@ -16,10 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.macower.basedata.util.DoubleUtil;
+import com.macower.businessdata.dao.DiscodeDaoImpl;
 import com.macower.businessdata.dao.OrderDaoImpl;
 import com.macower.businessdata.dao.OrderDetailDaoImpl;
 import com.macower.businessdata.dao.ShopItemDaoImpl;
 import com.macower.businessdata.dto.OrderDto;
+import com.macower.businessdata.entity.Discode;
 import com.macower.businessdata.entity.Member;
 import com.macower.businessdata.entity.Order;
 import com.macower.businessdata.entity.OrderDetail;
@@ -44,6 +46,9 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 
 	@Autowired
 	private ShopItemDaoImpl shopItemDao;
+	
+	@Autowired
+	private DiscodeDaoImpl discodeDao;
 
 	@Override
 	public Page<Order> findPageBy(OrderDto obj, Integer pageNo, Integer pageSize) {
@@ -97,7 +102,11 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 	public Order get(Long id) {
 		return this.orderDao.get(id);
 	}
-
+	public static void main(String[] args) {
+		double d = 0 ;
+		System.out.println(d/1);
+	}
+	
 	/**
 	 * 生成订单
 	 */
@@ -108,19 +117,63 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 		String[] shopItemIds = request.getParameterValues("shopItemId");// 购物车id
 		String[] item_productIds = request.getParameterValues("item_productId");
 		String[] item_amounts = request.getParameterValues("item_amount");
-		// 生成订单 生成订单详情数据
+		String discountCode = request.getParameter("discountCode");
+		// 生成订单详情数据
 		List<OrderDetail> list = new ArrayList<OrderDetail>();
 		double totalPrice = 0.0d;
 		if (item_productIds == null) {
 			return;
 		}
+		double discount = 0 ;
+		if(StringUtils.isNotEmpty(discountCode)){
+			discountCode = discountCode.trim() ;
+			//查询数据库
+			Discode param = new Discode() ;
+			param.setDiscode(discountCode) ;
+			param.setStatus(1) ;//未使用
+			int sum = discodeDao.countBy(param) ;
+			if(sum > 0){ //折扣码有效
+				//计算总金额(不精确)
+				double tmp_totalPrice = 0.0d ;
+				for (int i = 0; i < item_productIds.length; i++) {
+					ShopItem shopItem = shopItemDao.get(Long.parseLong(shopItemIds[i]));
+					tmp_totalPrice = tmp_totalPrice + (shopItem.getUnitPrice()*Double.parseDouble(item_amounts[i])) ;
+				}
+				//优惠金额计算规则 每50美元优惠2美元
+				if(tmp_totalPrice <= 50){
+					discount = 2 ;
+				}else if(tmp_totalPrice > 50 && tmp_totalPrice <=100){
+					discount = 4 ;
+				}else if(tmp_totalPrice > 100 && tmp_totalPrice <=150){
+					discount = 6 ;
+				}else if(tmp_totalPrice > 150 && tmp_totalPrice <=200){
+					discount = 8 ;
+				}else if(tmp_totalPrice > 200 ){
+					discount = 10 ;
+				}
+			}
+		}
+		
+		//计算购买件数
+		int amount = 0 ;
+		for (int i = 0; i < item_amounts.length; i++) {
+			amount = amount +Integer.parseInt(item_amounts[i]) ;
+		}
+		//计算每件产品平均优惠金额
+		double avgDiscountPrince = discount/amount ;
+		//格式化保留两位小数
+		avgDiscountPrince = new DoubleUtil().format2Point(avgDiscountPrince) ;
+			
 		for (int i = 0; i < item_productIds.length; i++) {
 			ShopItem shopItem = shopItemDao.get(Long.parseLong(shopItemIds[i]));
 			OrderDetail orderDetail = new OrderDetail();
 			orderDetail.setProductId(Long.parseLong(item_productIds[i]));
 			orderDetail.setAmount(Integer.parseInt(item_amounts[i]));
-			orderDetail.setUnitPrice(shopItem.getUnitPrice());
-			orderDetail.setBasePrice(shopItem.getUnitPrice());
+			double unitPrice = shopItem.getUnitPrice() - avgDiscountPrince ;
+			//格式化
+			unitPrice = new DoubleUtil().format2Point(unitPrice) ;
+			orderDetail.setUnitPrice(unitPrice);//折扣价
+			orderDetail.setBasePrice(shopItem.getUnitPrice());//原价
 			orderDetail.setColor(shopItem.getColor()) ;
 			orderDetail.setSize(shopItem.getSize()) ;
 
@@ -130,6 +183,8 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 			totalPrice = b1.add(b2).doubleValue();
 			list.add(orderDetail);
 		}
+		/*****************************************/
+		//生成订单数据
 		Order order = new Order();
 		String orderNo = "NO"
 				+ new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
@@ -140,7 +195,15 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 		totalPrice = new DoubleUtil().format2Point(totalPrice) ;
 		
 		order.setOrderTotalPrice(new Double(totalPrice));
-		order.setDiscountTotalPrice(new Double(totalPrice));// 生成订单时  折扣后的订单金额初始化为原始订单金额
+		//根据折扣码计算折扣总金额
+		double discountTotalPrice = totalPrice -discount ; 
+		//格式化
+		discountTotalPrice = new DoubleUtil().format2Point(discountTotalPrice) ;
+		order.setDiscountTotalPrice(new Double(discountTotalPrice));// 生成订单时  折扣后的订单金额初始化为原始订单金额
+		order.setDiscountPrice(discount) ;//设置优惠金额
+		if(StringUtils.isNotEmpty(discountCode)){//设置订单折扣码
+			order.setDiscode(discountCode) ;
+		}
 		Member member = (Member) session.getAttribute("member");
 		if (member != null) {
 			order.setMemberId(member.getId());
@@ -153,7 +216,21 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 			detail.setOrderId(order.getId());
 			this.orderDetailDao.save(detail);
 		}
-
+		//更新折扣码的状态为已使用2
+		if(StringUtils.isNotEmpty(discountCode)){
+			Discode param = new Discode() ;
+			param.setDiscode(discountCode) ;
+			param.setStatus(1) ; //未使用
+			List<Discode> discodeList = this.discodeDao.findBy(param) ;
+			if(discodeList != null && discodeList.size() > 0){
+				for(Discode d : discodeList){
+					d.setStatus(2) ;
+					d.setUseTm(new Date()) ;
+					this.discodeDao.update(d) ;
+				}
+			}
+		}
+		/****************************************/
 		// 清空购物车
 		List<ShopItem> shopItemList = null;
 		ShopItem param = new ShopItem();

@@ -2,6 +2,7 @@ package com.macower.businessdata.biz;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,8 +10,13 @@ import java.util.TimerTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.macower.businessdata.dao.DiscodeDaoImpl;
 import com.macower.businessdata.dao.TaskDaoImpl;
+import com.macower.businessdata.entity.Discode;
 import com.macower.businessdata.entity.Task;
+import com.macower.businessdata.task.DiscodeGuestTimerTask;
+import com.macower.businessdata.task.DiscodeMemberTimerTask;
+import com.macower.businessdata.task.DiscodeTaskEmailTimerTask;
 import com.macower.businessdata.task.GuestTimerTask;
 import com.macower.businessdata.task.MemberTimerTask;
 import com.macower.businessdata.task.TaskEmailTimerTask;
@@ -26,6 +32,9 @@ public class TaskBizImpl extends BaseBiz implements TaskBiz {
 
 	@Autowired
 	private TaskDaoImpl taskDao;
+	
+	@Autowired
+	private DiscodeDaoImpl discodeDao;
 
 	@Override
 	public Page<Task> findPageBy(Task obj, Integer pageNo, Integer pageSize) {
@@ -90,18 +99,32 @@ public class TaskBizImpl extends BaseBiz implements TaskBiz {
 			throw new BizException("任务类型为空");
 		}
 		switch (old.getTaskType()) {
-		case 1:
+		case 1: //目标客户
 			task = new TaskEmailTimerTask(dataRows, taskId, subject, emailTpl,
 					hostEmail, hostPassword);
 			break;
-		case 2:
+		case 2: //游客
 			task = new GuestTimerTask(dataRows, taskId, subject, emailTpl,
 					hostEmail, hostPassword);
 			break;
-		case 3:
+		case 3: //会员
 			task = new MemberTimerTask(dataRows, taskId, subject, emailTpl,
 					hostEmail, hostPassword);
 			break;
+		case 4: //4:目标客户-折扣码  
+			task = new DiscodeTaskEmailTimerTask(dataRows, taskId, subject, emailTpl,
+					hostEmail, hostPassword);
+			break ;
+		case 5: //5：游客-折扣码 
+			task = new DiscodeGuestTimerTask(dataRows, taskId, subject, emailTpl,
+					hostEmail, hostPassword);
+			break ;
+		case 6: //6：会员-折扣码
+			task = new DiscodeMemberTimerTask(dataRows, taskId, subject, emailTpl,
+					hostEmail, hostPassword);
+			break ;
+			default:
+				break ;
 		}
 		
 		timer.schedule(task, d, 1000 * 60 * old.getRunCycle());// 1000*60
@@ -146,9 +169,20 @@ public class TaskBizImpl extends BaseBiz implements TaskBiz {
 		if (old == null) {
 			throw new BizException("该任务已删除");
 		}
+		Discode param = new Discode() ;
+		param.setStatus(0) ; //
+		Page<Discode> page = this.discodeDao.findPageBy(param, 0, 1);
+		List<Discode> list = (List<Discode>)page.getData() ;
+		if(list == null || list.size() == 0){
+			throw new BizException("没有可用的折扣码");
+		}
+		Discode code = list.get(0) ;
+		String emailTpl = old.getEmailTpl() ;
+		if(old.getTaskType() == 4 || old.getTaskType() == 5 || old.getTaskType() == 6){
+			emailTpl = emailTpl.replace("{discode}", code.getDiscode()) ;
+		}
 		EmailUtil emailUtil = new EmailUtil(old.getEmail(), old.getPassword());
-		System.out.println(email);
-		emailUtil.sendGmailEmail(old.getSubject(), old.getEmailTpl(), email);
+		emailUtil.sendGmailEmail(old.getSubject(), emailTpl, email);
 	}
 
 }

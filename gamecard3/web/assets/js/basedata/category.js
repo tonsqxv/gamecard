@@ -180,7 +180,7 @@ Ext.onReady(function(){
 					displayField:"text",
 					valueField:"key",
 					triggerAction: "all",
-					fieldLabel:"品牌",
+					fieldLabel:"产品详情模板",
 					selectOnFocus:true,
 					store:new Ext.data.JsonStore({
 						autoLoad:true,
@@ -233,7 +233,7 @@ Ext.onReady(function(){
 		editWin.setTitle("新增");
 		editWin.show();
 		editForm.getForm().reset();
-		editForm.getForm().findField("parentId").setValue(his_node.attributes.id);
+		editForm.getForm().findField("parentId").setValue((his_node==null)?'':his_node.attributes.id);
 	}
 	// 修改
 	function onUpdate() {

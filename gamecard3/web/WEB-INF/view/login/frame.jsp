@@ -101,6 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		var menu_taskEmail = {id:"taskEmail",text:"目标客户",handler:function(item){openMenu(item, '<%=basePath%>/taskEmail/main', '目标客户', '');}};
 		
+		var menu_discode = {id:"discode",text:"折扣码管理",handler:function(item){openMenu(item, '<%=basePath%>/discode/main', '折扣码管理', '');}};
+		
 		var menu_bizData = {
 							id:"bizData",
 							text:"业务数据",
@@ -115,6 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											,menu_contact
 											,menu_task
 											,menu_taskEmail
+											,menu_discode
 										]
 							})
 						};
@@ -179,7 +182,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							,menu: new Ext.menu.Menu({
 								items: [
-											//menu_people2
+											//menu_people2 
+										]
+							})
+						};
+		
+		var menu_newsCategory = {id:"newsCategory",text:"新闻类别管理",handler:function(item){openMenu(item, '<%=basePath%>/newsCategory/main', '新闻类别管理', '');}};
+
+		var menu_news = {id:"news",text:"新闻管理",handler:function(item){openMenu(item, '<%=basePath%>/news/main', '新闻管理', '');}};
+
+		var menu_newsComments = {id:"newsComments",text:"新闻点评",handler:function(item){openMenu(item, '<%=basePath%>/newsComments/main', '新闻点评', '');}};
+
+		var menu_newsData = {
+							id:"newsData",
+							text:"新闻管理",
+							handler:function(item){
+												return;openMenu(item, '..', '新闻管理', '');
+												}
+
+							,menu: new Ext.menu.Menu({
+								items: [
+										menu_newsCategory
+										,menu_news
+										,menu_newsComments
 										]
 							})
 						};
@@ -189,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var menuBar = new Ext.Toolbar({
 							enableOverflow:"true"
 							,items: [
-										'-'	,menu_sysManager,'-',menu_baseData,'-',menu_bizData,'-',menu_orderManager,'-',menu_reportData,'-','->'
+										'-'	,menu_sysManager,'-',menu_baseData,'-',menu_bizData,'-',menu_orderManager,'-',menu_reportData,'-',menu_newsData,'-','->'
 										,{
 											icon:"<%=basePath %>/assets/images/frame/new.gif",
 											text:"工具",

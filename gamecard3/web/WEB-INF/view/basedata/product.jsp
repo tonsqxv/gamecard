@@ -28,9 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath %>/assets/ckeditor/Ext.form.BasicForm.js"></script>
 	<script type="text/javascript" src="<%=basePath %>/assets/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath %>/assets/ckeditor/Ext.form.CKEditor.js"></script>
-	
 	<script type="text/javascript" src="<%=basePath %>/assets/ckfinder/ckfinder.js"></script>
-	<script type="text/javascript" src="<%=basePath %>/assets/ckeditor/Ext.form.CKEditor.js"></script>
 	
 	<!-- my js file -->
 	<script type="text/javascript" src="<%=basePath %>/assets/js/basedata/product.js"></script>
