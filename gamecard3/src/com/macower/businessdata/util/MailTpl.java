@@ -233,7 +233,8 @@ public class MailTpl {
 		msg.append("<h2 style='FONT-SIZE: 22px; MIN-HEIGHT: 30px; COLOR: #cc6600; BORDER-BOTTOM: gray 1px dashed'>");
 		msg.append("Coupon Code For Customer</h2>");
 		
-		msg.append("<p>Thanks for buying the products from our website, your Coupon Code is <b><font color='#cc6600'>"+discode+"</font></b>, enter coupon code when you place an order, we will give you a discount.</p>") ;
+		msg.append("<p>Thanks for buying the products from our website, your Coupon Code is <b><font color='#cc6600'>"+discode+"</font></b>, enter coupon code when you place an order, you will get a discount.</p>") ;
+		msg.append("<p>Thanks</p>");
 		msg.append("<p><a href='http://www.n3ds-card.com'>www.n3ds-card.com</a></p>");
 		msg.append("<p>&nbsp;</p></div>");
 		msg.append("</html>");

@@ -574,6 +574,8 @@ public class PayAction {
 			String subject = "Your Order Has Been Updated " ;
 			EmailUtil email = new EmailUtil(null,null,null,null) ;
 			email.sendGmailEmail(subject, new MailTpl().getPaiedMailTpl(order), order.getEmail()) ;
+			
+			session.removeAttribute("prePayOrderId") ;
 		} catch (Exception e) {
 			log.error(e.getMessage()) ;
 			session.setAttribute("exception", e);

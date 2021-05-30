@@ -228,12 +228,7 @@ public class OrderAction {
 	public String cancelOrder(@PathVariable Long id ) {
 		
 		// 更改订单状态
-		Order old = this.orderBiz.get(id) ;
-		if(old.getOrderStatus() == 1){ //未付款才可以取消
-			old.setOrderStatus(5) ; //取消订单
-			old.setCancelledTm(new Date()) ;
-			this.orderBiz.update(old) ;
-		}
+		this.orderBiz.cancelOrder(id) ;
 		
 		return "redirect:/order/toMyOrder";
 		

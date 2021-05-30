@@ -95,7 +95,19 @@
 		<path>/pay/confirmPayDetail</path>
 		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
 	</mapping>
-	
+	<!-- 新闻 -->
+	<mapping>
+		<path>/news/</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/news/*/newsDetail</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
+	<mapping>
+		<path>/news/*/comment</path>
+		<decorator>/WEB-INF/view/common/decorator.jsp</decorator>
+	</mapping>
 
 </sitemesh>  
 

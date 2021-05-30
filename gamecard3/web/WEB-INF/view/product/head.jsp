@@ -20,6 +20,7 @@
 		           <li><a href="<%=basePath4head%>/help/shippingAndReturn">Shipping&amp;Returns</a></li>
 		           <li class="divider-vertical"></li>  
 		           <li><a href="<%=basePath4head%>/help/">Help&amp;Faqs</a></li>
+		           <li><a href="<%=basePath4head%>/news/">News</a></li>
 		        </ul>
 		        <form class="navbar-form pull-right" action="<%=basePath4head%>/product/searchBy">
                    <input type="text" name="searchByParam_productName" class="span3" placeholder="key word" value="${searchByParam_productName }">

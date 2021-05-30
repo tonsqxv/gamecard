@@ -4,12 +4,10 @@ package com.macower.sys.biz;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.macower.common.core.ApplicationContext;
 import com.macower.core.entity.Page;
 import com.macower.core.exception.BizException;
 import com.macower.sys.dao.ConfigDaoImpl;
@@ -101,33 +99,14 @@ public class ConfigBizImpl implements ConfigBiz {
 		return this.configDao.findBy(obj) ;
 	}
 
-
-	@SuppressWarnings("unchecked")
 	@Override
 	public Config findFromCacheByConfigCode(String configCode) {
-		ServletContext context =ApplicationContext.getInstance() ;
-		List<Config> list = (List<Config>)context.getAttribute("configList") ;
-		if(list == null){
-			list = this.configDao.findAll() ;
-			context.setAttribute("configList", list) ;
-			
-		}
-		for(Config c :list){
-			if(configCode!=null && configCode.equals(c.getConfigCode())){
-				return c ;
-			}
-		}
-		return null;
+		return this.configDao.findFromCacheByConfigCode(configCode) ;
 	}
+	
 	@Override
 	public Config findByConfigCode(String configCode) {
-		Config param = new Config() ;
-		param.setConfigCode(configCode) ;
-		List<Config> list = this.configDao.findBy(param) ;
-		if(list != null && list.size() > 0){
-			return list.get(0) ;
-		}
-		return null;
+		return this.configDao.findByConfigCode(configCode) ;
 	}
 
 }

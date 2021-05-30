@@ -254,13 +254,16 @@ public class MemberAction {
 			//判断请求的页面来源转向不同的页面
 			//如果session中有prePayOrderId属性值说明登录是为了支付
 			Long prePayOrderId = (Long)session.getAttribute("prePayOrderId") ;
-			
+			Long newsId = (Long)session.getAttribute("newsId") ; //新闻点评登录
 			if(prePayOrderId != null){
 				returnPage =  "redirect:/pay/prePayForm";
+			}else if(newsId != null){
+				session.removeAttribute("newsId") ;
+				returnPage =  "redirect:/news/"+newsId+"/newsDetail";
 			}
 			
 		}else{
-			ra.addFlashAttribute("error", "username or password error ！");
+			ra.addFlashAttribute("error", "username or password error !");
 			returnPage =  "redirect:/member/login";
 		}
 		//成功后跳转到主页面

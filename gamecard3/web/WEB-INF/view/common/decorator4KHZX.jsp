@@ -16,10 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-translate-customization" content="1e73dcaa81aa4ac7-61a6e2a043015e7a-g53185def3341f4dc-11"></meta>
    
-    
+    <!-- 自定义css -->
+    <link href="<%=basePathforHead %>/assets/css/product/common.css" rel="stylesheet">
      <!-- Bootstrap -->
     <link href="<%=basePathforHead %>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="<%=basePathforHead %>/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="<%=basePathforHead %>/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
  	
  	<script src="<%=basePathforHead %>/assets/js/common/jquery-1.8.2.min.js"></script>
     <script src="<%=basePathforHead %>/assets/bootstrap/js/bootstrap.min.js"></script>

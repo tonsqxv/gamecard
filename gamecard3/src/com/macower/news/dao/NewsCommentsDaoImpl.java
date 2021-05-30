@@ -23,4 +23,8 @@ public class NewsCommentsDaoImpl extends BaseEntityDao<NewsComments> {
 		return this.findPageBy(dc,pageNo,pageSize) ;
 	}
 
+	public void deleteByNewsIds(String ids) {
+		this.executeUpdate("delete from tb_news_comments where news_id in("+ids+")") ;
+	}
+
 }

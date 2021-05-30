@@ -12,6 +12,7 @@
 
 
 				<!-- 分类树 -->
+				<c:if test="${!empty categoryTree }">
 				<div class="dropdown clearfix">
 		              <ul class="dropdown-menu nav nav-list btn-block" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 		                <!-- 类别标题 -->
@@ -39,6 +40,7 @@
 		                <li class="divider"></li>
 		              </ul>
 		          </div>
+		          </c:if>
 		          
 		          <!-- 热门产品 -->
 		          <c:if test="${!empty hotProducts }">
@@ -59,7 +61,7 @@
 				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
 				                <p>Sold:${card.sales+card.baseSales}</p>
 				              </div><!--/span-->
-				              <div class="span12">
+				              <div class="span12 common">
 				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
 				              </div><!--/span-->
 				            </div><!--/row-fluid-->
@@ -93,7 +95,7 @@
 				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
 				                <p>Sold:${card.sales+card.baseSales}</p>
 				              </div><!--/span-->
-				              <div class="span12">
+				              <div class="span12 common">
 				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
 				              </div><!--/span-->
 				            </div><!--/row-fluid-->
@@ -127,7 +129,7 @@
 				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
 				                <p>Sold:${card.sales+card.baseSales}</p>
 				              </div><!--/span-->
-				              <div class="span12">
+				              <div class="span12 common">
 				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
 				              </div><!--/span-->
 				            </div><!--/row-fluid-->

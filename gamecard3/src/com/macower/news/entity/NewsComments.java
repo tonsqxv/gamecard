@@ -36,8 +36,11 @@ public class NewsComments extends BaseEntity{
 	@Column(name="member_id")
 	private Long memberId ;
 	
-	@Formula("(select t.email from tb_member t where t.id = member_id)")
-	private String memberName ;
+	@Formula("(select t.first_name from tb_member t where t.id = member_id)")
+	private String firstName ;
+	
+	@Formula("(select t.last_name from tb_member t where t.id = member_id)")
+	private String lastName ;
 	
 	@Column(name="context")
 	private String context ;
@@ -93,13 +96,20 @@ public class NewsComments extends BaseEntity{
 		this.newsTitle = newsTitle;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 }

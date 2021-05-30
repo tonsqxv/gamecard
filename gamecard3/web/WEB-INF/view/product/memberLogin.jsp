@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="container ">
     	<div class="offset2 span8">
-		      <form id="loginForm" class="form-signin" action="memberLogin" method="post">
+		      <form id="loginForm" class="form-signin" action="<%=basePath%>/member/memberLogin" method="post">
 		         <h2>Please sign in</h2>
 		          <div><font color="red"><span id="error">${error}</span></font></div>	
 		           Email:
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  type:"post",
 			  cache:false,    
 			  dataType : "json",
-			  url:"checkEmail",
+			  url:"<%=basePath%>/member/checkEmail",
 			  data: {"email":email},
 			  success:function(data){
 				  if(data.success == "no"){	    		
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  type:"post",
 		  cache:false,    
 		  dataType : "json",
-		  url:"checkEmail",
+		  url:"<%=basePath%>/member/checkEmail",
 		  data: {"email":email},
 		  success:function(data){
 			  if(data.success == "no"){	    		

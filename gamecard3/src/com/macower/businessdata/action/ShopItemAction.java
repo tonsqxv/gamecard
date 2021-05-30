@@ -141,5 +141,28 @@ public class ShopItemAction {
 		JsonUtils.returnJson(response, map);
 		
 	}
+	
+	/**
+	 * 后台管理-AJAX请求批量删除
+	 * @param ids
+	 * @param response
+	 */
+	@RequestMapping({ "/delete" })
+	public void delete(String ids, HttpServletResponse response) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("success", true);
+
+		try {
+			shopItemBiz.deletes(ids);
+		} catch (Exception e) {
+			//删除捕获所有的异常
+			map.put("success", false);
+			map.put("msg", e.getMessage());
+			e.printStackTrace();
+		}
+		
+		JsonUtils.returnJson(response,map) ;
+	}
 
 }

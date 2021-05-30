@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.macower.core.biz.BaseBiz;
 import com.macower.core.entity.Page;
+import com.macower.news.dao.NewsCommentsDaoImpl;
 import com.macower.news.dao.NewsDaoImpl;
 import com.macower.news.entity.News;
 
@@ -15,6 +16,9 @@ public class NewsBizImpl extends BaseBiz implements NewsBiz {
 
 	@Autowired
 	private NewsDaoImpl newsDao ;
+	
+	@Autowired
+	private NewsCommentsDaoImpl newsCommentsDao ;
 	
 	@Override
 	public Page<News> findPageBy(News obj, Integer pageNo,
@@ -46,6 +50,8 @@ public class NewsBizImpl extends BaseBiz implements NewsBiz {
 	@Override
 	public void deletes(String ids) {
 		this.newsDao.deleteByIds(ids) ;
+		//删除新闻点评
+		this.newsCommentsDao.deleteByNewsIds(ids);
 	}
 
 

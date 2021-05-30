@@ -48,5 +48,7 @@ public interface OrderBiz {
 
 	public Order findShippingNoByOrderNo(String orderNo);
 
+	public void cancelOrder(Long id);
+
 
 }

@@ -120,12 +120,13 @@ Ext.onReady(function(){
 	}
 	
 	var btnSearch = new Ext.Button({text:"查询",iconCls:'search',handler:onSearch }) ;
+	var btnDelete = new Ext.Button({text:"删除",iconCls:'delete',handler:onDelete }) ;
 	
 	new Ext.Viewport({
 		layout:"border",
 		items:[{
 			region:"center",
-			tbar:[btnSearch],
+			tbar:[btnSearch,"-",btnDelete],
 			layout:"border",
 			//bodyBorder:false,
 			items:[
@@ -140,6 +141,7 @@ Ext.onReady(function(){
 		}
 	});
 	
+	
 	function onSearch(){
 		
 		if (queryForm.getForm().isValid() == false) {
@@ -151,7 +153,41 @@ Ext.onReady(function(){
 		gridPanel.getStore().load();
 	}
 	
-	
+	function onDelete(){
+		var records = gridPanel.getSelectionModel().getSelections();
+		if (records.length < 1) {
+			Ext.MessageBox.alert('提示', '选择需要删除的数据');
+		} else {
+			Ext.MessageBox.confirm('提示','确定要删除选中的记录吗', deleteRecord);
+		}
+	}
+	// 删除事件请求调用
+	function deleteRecord(result) {
+			if (result == 'yes') {
+				var records = gridPanel.getSelectionModel().getSelections();
+				var ids = '';
+				for(var i = 0; i < records.length; i++) {
+					if(i==0){
+						ids += records[i].data.id ;
+					}else{
+						ids += ',' + records[i].data.id ;
+					}
+				}
+				Ext.Ajax.request({params: {ids: ids},
+					url: "delete",
+					success: function(response) {
+						var resp = Ext.util.JSON.decode(response.responseText);
+						if (resp.success) {
+							Ext.MessageBox.alert('提示','数据删除成功');
+						} else {
+							Ext.MessageBox.alert('操作失败', resp.msg);
+						}
+						gridPanel.getStore().load();
+					},
+					failure:ajaxRequestFailure
+				});
+			}
+		}
 	
 	
 });

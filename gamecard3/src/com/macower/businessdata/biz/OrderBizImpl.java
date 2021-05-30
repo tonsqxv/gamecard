@@ -33,6 +33,8 @@ import com.macower.core.exception.BizException;
 import com.macower.core.util.EmailUtil;
 import com.macower.core.util.JsonUtils;
 import com.macower.core.util.StringUtils;
+import com.macower.sys.dao.ConfigDaoImpl;
+import com.macower.sys.entity.Config;
 
 @Service
 public class OrderBizImpl extends BaseBiz implements OrderBiz {
@@ -43,6 +45,8 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 	@Autowired
 	private OrderDetailDaoImpl orderDetailDao;
 
+	@Autowired
+	private ConfigDaoImpl configDao;
 
 	@Autowired
 	private ShopItemDaoImpl shopItemDao;
@@ -139,18 +143,15 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 					ShopItem shopItem = shopItemDao.get(Long.parseLong(shopItemIds[i]));
 					tmp_totalPrice = tmp_totalPrice + (shopItem.getUnitPrice()*Double.parseDouble(item_amounts[i])) ;
 				}
-				//优惠金额计算规则 每50美元优惠2美元
-				if(tmp_totalPrice <= 50){
-					discount = 2 ;
-				}else if(tmp_totalPrice > 50 && tmp_totalPrice <=100){
-					discount = 4 ;
-				}else if(tmp_totalPrice > 100 && tmp_totalPrice <=150){
-					discount = 6 ;
-				}else if(tmp_totalPrice > 150 && tmp_totalPrice <=200){
-					discount = 8 ;
-				}else if(tmp_totalPrice > 200 ){
-					discount = 10 ;
+				Config discodeConfig = this.configDao.findFromCacheByConfigCode("discode") ;
+				double dc = (discodeConfig==null)?0.0:Double.parseDouble(discodeConfig.getConfigValue());
+				if(dc >= 1){
+					log.error("error:config(discode) value is error,please check config value.") ;
+					dc = 0 ;
+				}else{
+					discount = tmp_totalPrice*(1-dc) ;
 				}
+				
 			}
 		}
 		
@@ -435,7 +436,6 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 				old.setDispatchMailTm(new Date());
 				this.orderDao.update(old);
 			}
-
 		}
 
 	}
@@ -467,6 +467,30 @@ public class OrderBizImpl extends BaseBiz implements OrderBiz {
 			return list.get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public void cancelOrder(Long id) {
+		// 更改订单状态
+		Order old = this.orderDao.get(id) ;
+		if(old.getOrderStatus() == 1){ //未付款才可以取消
+			old.setOrderStatus(5) ; //取消订单
+			old.setCancelledTm(new Date()) ;
+			this.orderDao.update(old) ;
+		}
+		//更改折扣码状态
+		String discode = old.getDiscode() ;
+		if(StringUtils.isNotEmpty(discode)){
+			Discode param = new Discode() ;
+			param.setDiscode(discode) ;
+			List<Discode> list = this.discodeDao.findBy(param) ;
+			if(list != null && list.size() > 0){
+				for(Discode code : list){
+					code.setStatus(1) ;//未使用
+					this.discodeDao.update(code) ;
+				}
+			}
+		}
 	}
 
 }

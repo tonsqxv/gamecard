@@ -146,4 +146,8 @@ public class Page<T> implements IPage<T> {
 		return this.data.toArray(a);
 	}
 
+	public void setData(Collection<T> data) {
+		this.data = data;
+	}
+
 }

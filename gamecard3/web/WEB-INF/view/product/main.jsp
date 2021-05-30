@@ -79,7 +79,7 @@
 	              <a href="<%=basePath %>/product/${card.id}/productDetail" class="thumbnail">
 	                <img src="<%=basePath %>/assets/images/product/${card.mainImgPath}"/>
 	              </a>
-	              <p class="text-center">
+	              <p class="text-center common">
 	               <a href="<%=basePath %>/product/${card.id}/productDetail">${card.productName}</a>
 	              </p>
 	              <c:choose>
