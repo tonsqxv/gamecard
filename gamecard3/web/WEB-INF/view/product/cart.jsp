@@ -16,14 +16,14 @@
   <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-    	<div class="span2 offset1" >
+    	<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
    		</div><!--/span2-->
 
-    	<div class="span8">
+    	<div class="col-lg-8">
 		  <ul class="breadcrumb">
 		    		  <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; Your Shopping cart</span></li>
 		  </ul>
@@ -34,23 +34,23 @@
             <tbody>
               <tr>
                 <td colspan="10">
-                    <div class="row-fluid">
-                      <div class="span2">
+                    <div class="row">
+                      <div class="col-lg-2">
                          Cart Items
                       </div>
-                      <div class="span4">
+                      <div class="col-lg-4">
                         	Product
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                        	 	Item Price
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                         	Quantity
                       </div>
-                      <div class="span1">
+                      <div class="col-lg-1">
                    		     Item Total
                       </div>
-                       <div class="span1">
+                       <div class="col-lg-1">
                    		     
                       </div>
                     </div>  
@@ -62,14 +62,14 @@
                <input type="hidden" name="shopItemId"  value="${shopItem.id}">
              <tr>
                 <td colspan="12">
-                    <div class="row-fluid">
-                      <div class="span2">
+                    <div class="row">
+                      <div class="col-lg-2">
                         <a href="#" onclick="javascript:window.open('<%=basePath %>/product/${shopItem.productId}/productDetail');" class="thumbnail">
                           <img src="<%=basePath %>/assets/images/product/${shopItem.cardMainImg}" width="130" height="130"/>
                           <input type="hidden" name="item_productId"  value="${shopItem.productId}">
                         </a>  
                       </div>
-                      <div class="span4">
+                      <div class="col-lg-4">
 	                      	<h6>&nbsp;</h6>
 	                        <a  href="#" onclick="javascript:window.open('<%=basePath %>/product/${shopItem.productId}/productDetail');">
 	                         <span id="item_productName_${shopItem.id }">${shopItem.productName }</span>
@@ -95,7 +95,7 @@
 						   </c:choose>
                          	
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                       	<c:choose>
 								<c:when test="${shopItem.preSellPrice > shopItem.unitPrice }">
 									<del><h6>${shopItem.preSellPrice }</h6></del>
@@ -106,7 +106,7 @@
 						</c:choose>
                         <strong ><font color="red">$<span id="item_unitPrice_${shopItem.id }">${shopItem.unitPrice }</span></font></strong>
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                       	<h6>&nbsp;</h6>
                         <select id="item_amount_${shopItem.id }" name ="item_amount" class="span8" onChange="javascript:amountChange(${shopItem.unitPrice },${shopItem.id });">
                         <c:forEach var ="i" begin="1" end="30">
@@ -121,11 +121,11 @@
 						</c:forEach>
                         </select>
                       </div>
-                      <div class="span1">
+                      <div class="col-lg-1">
                       	<h6>&nbsp;</h6>
                         <strong ><font color="red">$<span id="item_unitTotalPrice_${shopItem.id }">${shopItem.itemTotal }</span></font></strong>
                       </div>
-                      <div class="span1">
+                      <div class="col-lg-1">
                       	<h6>&nbsp;</h6>
                         <a onclick="javascript:deleteItem(${shopItem.id },${shopItem.unitPrice });">
                         	 <img src="<%=basePath %>/assets/icos/product/deleteShopItem.gif"/>

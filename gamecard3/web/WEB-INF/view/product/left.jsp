@@ -10,11 +10,10 @@
 	
 %>  
 
-
 				<!-- 分类树 -->
 				<c:if test="${!empty categoryTree }">
 				<div class="dropdown clearfix">
-		              <ul class="dropdown-menu nav nav-list btn-block" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+		              <ul class="dropdown-menu nav nav-list btn-block"  style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 		                <!-- 类别标题 -->
 		                <h4 align="center">CATEGORIES</h4>
 		                <!-- 分割线 -->

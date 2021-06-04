@@ -18,22 +18,22 @@
  <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-   		<div class="span2 offset1" >
+   		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
    		</div><!--/span2-->
-    	<div class="span8">
+    	<div class="col-lg-8">
           <h4><font color="orange">${title}</font></h4>
           <hr>
           <!-- 产品展示 -->
           <c:set var="index" value="1"></c:set>
           <c:forEach items="${page.data }" var="product">
           	 <c:if test="${index%4==1 }">
-	    	   <div class="row-fluid">
+	    	   <div class="row">
 	    	 </c:if>
-		             <div class="span3">
+		             <div class="col-lg-3">
 			              <a href="<%=basePath %>/product/${product.id}/productDetail" class="thumbnail">
 			                <img src="<%=basePath %>/assets/images/product/${product.mainImgPath}"/>
 			              </a>
@@ -73,7 +73,7 @@
           </c:forEach>
           
 		<!-- 分页工具条 begin -->
-        <div class="span12" >
+        <div class="row" >
    			<!-- 总页数大于1时才显示分页工具 -->
 	       <c:if test="${page.totalPage >1}">
 	       <div class="badoo">

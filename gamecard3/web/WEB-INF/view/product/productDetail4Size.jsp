@@ -20,19 +20,19 @@
   <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-    		<div class="span2 offset1" >
+    		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
-   			</div><!--/span2-->
+   			</div><!--/col-lg-2-->
 
-    		<div class="span8">
+    		<div class="col-lg-8">
 
           <h2>${product.productName }</h2>
           <hr>    		
-    		  <div class="row-fluid">
-              <div class="span4">
+    		  <div class="row">
+              <div class="col-lg-4">
                 <div >
 						<a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class = 'cloud-zoom' id='zoom1'
 			              rel="adjustX: 10, adjustY:-4">
@@ -41,14 +41,14 @@
                 </div>
 	                
                 <div align="center">  
-                  <div class="span2">
+                  <div class="col-lg-2">
                       <a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class='cloud-zoom-gallery'
 			        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.mainImgPath }' ">
 			            <img src="<%=basePath %>/assets/images/product/${product.mainImgPath }"/>
 			          </a>  
                   </div>
                  <c:if test="${!empty product.zoomImg1 }">
-                 	<div class="span2">
+                 	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg1 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg1 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg1 }"/>
@@ -56,7 +56,7 @@
                     </div> 
                  </c:if>    
                  <c:if test="${!empty product.zoomImg2 }">
-                 	<div class="span2">
+                 	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg2 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg2 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg2 }"/>
@@ -64,7 +64,7 @@
                     </div>
                  </c:if> 
                  <c:if test="${!empty product.zoomImg3 }">
-                 	<div class="span2">
+                 	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg3 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg3 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg3 }"/>
@@ -72,7 +72,7 @@
                     </div>
                  </c:if> 
                  <c:if test="${!empty product.zoomImg4 }">
-                 	<div class="span2">
+                 	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg4 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg4 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg4 }"/>
@@ -80,7 +80,7 @@
                     </div>
                  </c:if> 
                  <c:if test="${!empty product.zoomImg5 }">
-                	 <div class="span2">
+                	 <div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg5 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg5 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg5 }"/>
@@ -88,7 +88,7 @@
                     </div> 
                  </c:if>   
                   <c:if test="${!empty product.zoomImg6 }">
-                 	 <div class="span2">
+                 	 <div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg6 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg6 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg6 }"/>
@@ -96,7 +96,7 @@
                      </div>
                  </c:if>   
                   <c:if test="${!empty product.zoomImg7 }">
-                  	<div class="span2">
+                  	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg7 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg7 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg7 }"/>
@@ -104,7 +104,7 @@
                     </div>
                  </c:if>   
                   <c:if test="${!empty product.zoomImg8 }">
-                 	 <div class="span2">
+                 	 <div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg8 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg8 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg8 }"/>
@@ -112,7 +112,7 @@
                     </div>
                  </c:if>   
                  <c:if test="${!empty product.zoomImg9 }">
-                 	<div class="span2">
+                 	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg9 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg9 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg9 }"/>
@@ -120,7 +120,7 @@
                     </div>
                  </c:if>   
                   <c:if test="${!empty product.zoomImg10 }">
-                  	<div class="span2">
+                  	<div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg10 }' class='cloud-zoom-gallery'
 				        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.zoomImg10 }' ">
 				            <img src="<%=basePath %>/assets/images/product/${product.zoomImg10 }"/>
@@ -130,47 +130,47 @@
                   
                 </div>
               </div>
-              <div class="span8">
+              <div class="col-lg-8">
 	                <br/> 
 	                 <div>
-		                  <div class="span3"><p class="text-right"><strong>ProductNo:</strong></p></div>
-		                  <div class="span9"><p class="text-left">${product.productNo }</p></div>
+		                  <div class="col-lg-3"><p class="text-right"><strong>ProductNo:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">${product.productNo }</p></div>
 	                 </div>
 	                 <c:choose>
 							<c:when test="${product.actualSellPrice < product.preSellPrice}">
 								<div>
-					                  <div class="span3"><p class="text-right"><strong>Price:</strong></p></div>
-					                  <div class="span9"><p class="text-left"><del>$${product.preSellPrice }</del></p></div>
+					                  <div class="col-lg-3"><p class="text-right"><strong>Price:</strong></p></div>
+					                  <div class="col-lg-9"><p class="text-left"><del>$${product.preSellPrice }</del></p></div>
 				                </div>
 				                <div>
-					                  <div class="span3"><p class="text-right"><strong>New Price:</strong></p></div>
-					                  <div class="span9"><p class="text-left"><font color="red">$<span id="actualSellPrice">${product.actualSellPrice }</span></font></p></div>
+					                  <div class="col-lg-3"><p class="text-right"><strong>New Price:</strong></p></div>
+					                  <div class="col-lg-9"><p class="text-left"><font color="red">$<span id="actualSellPrice">${product.actualSellPrice }</span></font></p></div>
 				                </div>
 							</c:when>
 							<c:otherwise>
 								<div>
-					                  <div class="span3"><p class="text-right"><strong>Price:</strong></p></div>
-					                  <div class="span9"><p class="text-left"><font color="red">$<span id="actualSellPrice">${product.actualSellPrice }</span></font></p></div>
+					                  <div class="col-lg-3"><p class="text-right"><strong>Price:</strong></p></div>
+					                  <div class="col-lg-9"><p class="text-left"><font color="red">$<span id="actualSellPrice">${product.actualSellPrice }</span></font></p></div>
 				                </div>
 							</c:otherwise>
 					</c:choose>
 	                
 	                <div>
-		                  <div class="span3"><p class="text-right"><strong>Name:</strong></p></div>
-		                  <div class="span9"><p class="text-left">${product.productName }</p></div>
+		                  <div class="col-lg-3"><p class="text-right"><strong>Name:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">${product.productName }</p></div>
 	                </div>
 	                 
 	                <c:forEach items="${kvList }" var="r">
 		                  <div>
-			                  <div class="span3"><p class="text-right"><strong>${r.key }:</strong></p></div>
-			                  <div class="span9"><p class="text-left">${r.value }</p></div>
+			                  <div class="col-lg-3"><p class="text-right"><strong>${r.key }:</strong></p></div>
+			                  <div class="col-lg-9"><p class="text-left">${r.value }</p></div>
 		                 </div>
 		            </c:forEach>
 		            
 	                 <c:if test="${!empty  sizeList}">
 	                 <div>
-		                  <div class="span3"><p class="text-right"><strong>Size:</strong></p></div>
-		                  <div class="span9"><p class="text-left"> 
+		                  <div class="col-lg-3"><p class="text-right"><strong>Size:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left"> 
 		                  		<c:forEach items="${sizeList }" var="r">
 		                  			<button class="btn btn-small" type="button" onclick="javascript:selectSize('${r.key}','${r.price}');">${r.key}</button>
 		                  		</c:forEach>
@@ -180,22 +180,22 @@
 	                </c:if>
 	                
 	                <div>
-		                  <div class="span3"><p class="text-right"><strong>Weight:</strong></p></div>
-		                  <div class="span9"><p class="text-left">${product.weight } KGS</p></div>
+		                  <div class="col-lg-3"><p class="text-right"><strong>Weight:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">${product.weight } KGS</p></div>
 	                </div>
 	                <div>
-		                  <div class="span3"><p class="text-right"><strong>Availability:</strong></p></div>
-		                  <div class="span9"><p class="text-left">${product.available }</p></div>
+		                  <div class="col-lg-3"><p class="text-right"><strong>Availability:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">${product.available }</p></div>
 	                </div>
 	                <div>
-		                  <div class="span3"><p class="text-right"><strong>Sold:</strong></p></div>
-		                  <div class="span9"><p class="text-left">${product.sales+product.baseSales }&nbsp;&nbsp;&nbsp;&nbsp;<img src="<%=basePath %>/assets/images/product/common/IcoRating${product.star }.gif"/></p></div>
+		                  <div class="col-lg-3"><p class="text-right"><strong>Sold:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">${product.sales+product.baseSales }&nbsp;&nbsp;&nbsp;&nbsp;<img src="<%=basePath %>/assets/images/product/common/IcoRating${product.star }.gif"/></p></div>
 	                </div>
 	                
 	                <div>
-		                  <div class="span3"><p class="text-right"><strong>Quantity:</strong></p></div>
-		                  <div class="span9"><p class="text-left">
-								<select id="item_amount" class="span2">
+		                  <div class="col-lg-3"><p class="text-right"><strong>Quantity:</strong></p></div>
+		                  <div class="col-lg-9"><p class="text-left">
+								<select id="item_amount" class="col-lg-2">
 			                        <c:forEach var ="i" begin="1" end="30">
 										<option value="${i }">${i }</option>
 									</c:forEach>
@@ -222,7 +222,7 @@
 
           <hr>
     		  
-    		</div><!--/span8-->
+    		</div><!--/col-lg-8-->
 
       </div><!-- row-fluid -->
 

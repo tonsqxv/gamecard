@@ -15,12 +15,12 @@
   <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1" >
    					<%@include file="left.jsp" %>
    			</div><!--/span2-->
-    		<div class="span8">
+    		<div class="col-lg-8">
     		    <ul class="breadcrumb">
 			         <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; Forgot your password?</span></li>
 			    </ul>
@@ -29,9 +29,15 @@
     		  	<div>
 					  <font color="red"><span id="email-help">${error}</span></font>
 					  <form id="findMyPasswordForm" class="form-search" action="<%=basePath %>/member/findMyPassword" method="post">
-					  	   <label>Email Address:</label>
-						   <input type="text" id="email" name="email" class="input-large">
-						   <img alt="" src="<%=basePath%>/assets/icos/product/btnSubmit.jpg" onclick="javascript:submitEmail();">
+					  	  <div class="row">
+					  	       <span class="col-lg-2">Email Address:</span>
+					  	       <div class="col-lg-4">
+					  	         <input class="form-control input-sm" type="text" id="email" name="email" class="input-large">
+					  	       </div>
+					  	       <div class="col-lg-3">
+					  	         <img alt="" src="<%=basePath%>/assets/icos/product/btnSubmit.jpg" onclick="javascript:submitEmail();">
+					  	       </div>
+					  	  </div>
 					  </form>
     		  	</div>
     		</div><!--/span8-->

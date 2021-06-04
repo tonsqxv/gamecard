@@ -19,23 +19,13 @@
 			alert('${msg }');
 		</script>   
 	</c:if>
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
+    	  <div class="col-lg-2 col-lg-offset-1" >
+		    		<%@include file="myAccount4Left.jsp" %>
+       	  </div><!--/span2-->
 
-    		<div class="span2 offset1" >
-		    		<div class="well sidebar-nav">
-			            <ul class="nav nav-list">
-			              <li ><a href="<%=basePath%>/member/toMyAccount">MyAccount</a></li>
-			              <li ><a href="<%=basePath%>/order/toMyOrder">MyOrders</a></li>
-			              <c:if test="${!empty member }">
-			              <li><a href="<%=basePath%>/member/changePassword">Change Password</a></li>
-			              </c:if>
-			            </ul>
-		          </div><!--/.well -->
-		              
-       		 </div><!--/span2-->
-
-    	 <div class="span8">
+    	 <div class="col-lg-8">
 		  <ul class="breadcrumb">
 		      <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; Change Password</span></li>
 		  </ul>
@@ -44,34 +34,34 @@
             <tbody>
               <tr>
                 <td >
-                      <div class="span12">
+                      <div class="row">
                         <form id="changePasswordForm" class="form-horizontal" action="<%=basePath %>/member/changMyPassword" method="post">
-                          <div class="control-group">
-                            <label class="control-label" for="error"></label>
-                            <div class="controls">
+                          <div class="row form-group">
+                            <span class="control-label col-lg-3"></span>
+                            <div class="col-lg-4">
                             	<font color="red"><span id="error">${error}</span></font>
                             </div>
                           </div>
-                          <div class="control-group">
-                            <label class="control-label" for="oldpassword">Password:</label>
-                            <div class="controls">
-                              <input type="password" id="oldpassword" name="oldpassword" placeholder="password">
+                          <div class="row form-group">
+                            <span class="control-label col-lg-3">Password:</span>
+                            <div class="col-lg-4">
+                              <input class="form-control input-sm" type="password" id="oldpassword" name="oldpassword" placeholder="password">
                             </div>
                           </div>
-                          <div class="control-group">
-                            <label class="control-label" for="newpassword">New Password:</label>
-                            <div class="controls">
-                              <input type="password" id="newpassword" name="newpassword" placeholder="new password">
+                          <div class="row form-group">
+                            <span class="control-label col-lg-3">New Password:</span>
+                            <div class="col-lg-4">
+                              <input class="form-control input-sm" type="password" id="newpassword" name="newpassword" placeholder="new password">
                             </div>
                           </div>
-                          <div class="control-group">
-                            <label class="control-label" for="newpassword2">Confirm Password:</label>
-                            <div class="controls">
-                              <input type="password" id="newpassword2" name="newpassword2" placeholder="Confirm password">
+                          <div class="row form-group">
+                            <span class="control-label col-lg-3">Confirm Password:</span>
+                            <div class="col-lg-4">
+                              <input class="form-control input-sm" type="password" id="newpassword2" name="newpassword2" placeholder="Confirm password">
                             </div>
                           </div>
-                          <div class="control-group">
-                            <div class="controls">                              
+                          <div class="row form-group">
+                            <div class="col-lg-4 col-lg-offset-3">                              
                               <img alt="" src="<%=basePath%>/assets/icos/product/btnSubmit.jpg" onclick="javascript:submitForm();">
                             </div>
                           </div>

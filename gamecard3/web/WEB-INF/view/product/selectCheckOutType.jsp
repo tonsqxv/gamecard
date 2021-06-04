@@ -15,60 +15,62 @@
   <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
    			</div><!--/span2-->
-    		<div class="span8">
+    		<div class="col-lg-8">
     					<ul class="breadcrumb">
 						      <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; My Shopping cart</span></li>
 						</ul>
 				        <h4><font color="orange"> Already have an account?</font></h4>
 				        <hr> 
-				        
 			           <form id="memberLoginForm" class="form-horizontal" action="<%=basePath %>/member/memberLogin" method="post">
 			           			
-			           			<div class="control-group">
-					              <label class="control-label" for="error"></label>
-					              <div class="controls">
+			           			<div class="row form-group">
+					              <span class="control-label col-lg-3"></span>
+					              <div class="col-lg-4">
 					                <div><font color="red"><span id="error">${error}</span></font></div>
 					              </div>
 					            </div>
-					            <div class="control-group">
-					              <label class="control-label" for="email">Email:</label>
-					              <div class="controls">
-					                <input type="text" id="email" name="email" placeholder="Email">
+					            <div class="row form-group">
+					              <span class="control-label col-lg-3">Email:</span>
+					              <div class="col-lg-4">
+					                <input class="form-control input-sm" type="text" id="email" name="email" placeholder="Email">
 					              </div>
 					            </div>
-					            <div class="control-group">
-					              <label class="control-label" for="password">Password:</label>
-					              <div class="controls">
-					                <input type="password" id="password" name="password" placeholder="Password">
+					            <div class="row form-group">
+					              <span class="control-label col-lg-3">Password:</span>
+					              <div class="col-lg-4">
+					                <input class="form-control input-sm" type="password" id="password" name="password" placeholder="Password">
 					              </div>
 					            </div>
-					            <div class="control-group">
-					              <div class="controls">
+					            <div class="row form-group">
+					              <div class="col-lg-4 col-lg-offset-3">
 					                <button type="button" class="btn btn-warning "	onclick="submitLogin()">Sign in</button>
 					              </div>
 					            </div>
-					            <div class="control-group">
-					              <div class="controls">
+					            <div class="row form-group">
+					              <div class="col-lg-4 col-lg-offset-3">
 					                 <p><a href="<%=basePath%>/member/findPassword">Forgot your password?</a></p>
 					              </div>
 					            </div>
 			          </form>
 			          
 			          <hr> 
-			          <h4><font color="orange">Not a existing customer?</font></h4>
+			          <div class="row">
+			          <h4><font color="orange"> Not a existing customer?</font></h4>
+			          </div>
+			          
 			          <hr> 
-			          <div class="row-fluid">
-					            <div class="span6">
+			          <div class="row">
+					            <div class="col-lg-6">
 						              <p>Register with us for a faster checkout,to track </p>
 						              <p>the status of your order and more.</p>
 						              <a href="<%=basePath%>/member/register"><button type="submit" class="btn btn-warning">Join Now</button></a>
 					            </div>
-					            <div class="span6">
+					            <div class="col-lg-6">
 						              <p>You can also checkout as a guest:</p>
 						              <p>&nbsp;</p>
 						              <a href="<%=basePath%>/pay/prePayForm"><button type="submit" class="btn btn-warning">Check out as a guest </button></a>

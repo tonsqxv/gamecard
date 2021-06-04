@@ -20,11 +20,9 @@
  </head>
  <body>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-
-    		<div class="offset2 span8">
-
+    <div class="container">
+      <div class="row">
+    	<div class="col-lg-8 col-lg-offset-2">
           <table class="table table-bordered table-striped">
              <thead>
               <tr>

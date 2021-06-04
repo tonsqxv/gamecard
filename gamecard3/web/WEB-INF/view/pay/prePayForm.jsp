@@ -15,12 +15,12 @@
   <body>
   <%@include file="../product/head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="../product/left.jsp" %>
    			</div><!--/span2-->
-    		<div class="span8">
+    		<div class="col-lg-8">
 	    		 <ul class="breadcrumb">
 			          <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt;My Shopping cart</span></li>
 			     </ul>
@@ -77,10 +77,12 @@
 		            		<c:forEach items="${shippingOptionList}" var="shippingOption">
 			            		<tr>	 
 		            				  <td>
+		            				  <div class="radio">
 		            				  <label class="radio">
 		            				  &nbsp;<input type="radio" name="shippingOptionId" value="${shippingOption.id }" <c:if test="${order.shippingOptionId == shippingOption.id}">checked='checked'</c:if>  />
 		            				  ${shippingOption.shippingOptionName }&nbsp;&nbsp;(<font color="red">$${shippingOption.shippingOptionAmount })</font>
 		            				  </label>
+		            				  </div>
 		            				  </td>
 		            			</tr>
 		            		</c:forEach>
@@ -91,72 +93,69 @@
          	   <hr> 
 	         	
 	           <div> <!-- 地址信息用div包装 -->
-	          		<div class="control-group">
-			              <label class="control-label" for="email">Buyer's Email(Required):</label>
-			              <div class="controls">
-			                <input type="text" id="email" name="email" maxlength="60" value="${order.email }"><font color="red">&nbsp;*</font>
+	          		<div class="row form-group">
+			              <span class="control-label col-lg-4">Buyer's Email(Required)<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="email" name="email" maxlength="60" value="${order.email }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="firstName">First name:</label>
-			              <div class="controls">
-			                <input type="text" id="firstName" name="firstName" maxlength="30" value="${order.firstName }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">First name<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="firstName" name="firstName" maxlength="30" value="${order.firstName }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="lastName">Last name:</label>
-			              <div class="controls">
-			                <input type="text" id="lastName" name="lastName" maxlength="30" value="${order.lastName }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Last name<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="lastName" name="lastName" maxlength="30" value="${order.lastName }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="phoneNum">Phone Number:</label>
-			              <div class="controls">
-			                <input type="text" id="phoneNum" name="phoneNum" maxlength="30" value="${order.phoneNum }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Phone Number<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="phoneNum" name="phoneNum" maxlength="30" value="${order.phoneNum }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="street1">Street1:</label>
-			              <div class="controls">
-			                <input type="text" id="street1" name="street1" maxlength="150" value="${order.street1 }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Street1<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="street1" name="street1" maxlength="150" value="${order.street1 }">
 			              </div>
 		            </div>
-		             <div class="control-group">
-			              <label class="control-label" for="street2">Street2:</label>
-			              <div class="controls">
-			                <input type="text" id="street2" name="street2" maxlength="150" value="${order.street2 }">
+		             <div class="row form-group">
+			              <span class="control-label col-lg-4">Street2:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="street2" name="street2" maxlength="150" value="${order.street2 }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="city">Suburb/City:</label>
-			              <div class="controls">
-			                <input type="text" id="city" name="city" maxlength="30" value="${order.city }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Suburb/City<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="city" name="city" maxlength="30" value="${order.city }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="state">State/Province:</label>
-			              <div class="controls">
-			                <input type="text" id="state" name="state" maxlength="30" value="${order.state }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">State/Province<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="state" name="state" maxlength="30" value="${order.state }">
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="country">Country:</label>
-			              <div class="controls">
-			              	<select name="country" id="country" style="width:8;">
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Country<font color="red">&nbsp;*</font>:</span>
+			              <div class="col-lg-4">
+			              	<select class="form-control" name="country" id="country" style="width:8;">
 			              		<option value="">Please select...</option>
 			              		<c:forEach items="${countryList}" var="country">
 			              			<option value="${country.code }"  <c:if test="${country.code == order.country}">selected</c:if>>${country.country }</option>
 			              		</c:forEach>
-			              		
-			              		
 			              	</select>
-			                <font color="red">&nbsp;*</font>
 			              </div>
 		            </div>
-		            <div class="control-group">
-			              <label class="control-label" for="zipCode">Zip/Postcode:</label>
-			              <div class="controls">
-			                <input type="text" id="zipCode" name="zipCode" maxlength="30" value="${order.zipCode }"><font color="red">&nbsp;*</font>
+		            <div class="row form-group">
+			              <span class="control-label col-lg-4">Zip/Postcode:</span>
+			              <div class="col-lg-4">
+			                <input class="form-control input-sm" type="text" id="zipCode" name="zipCode" maxlength="30" value="${order.zipCode }"><font color="red">&nbsp;*</font>
 			              </div>
 		            </div>
 		        
@@ -166,7 +165,7 @@
          	  <table class="table table-bordered table-condensed">
 		            <tbody>
 	            			<tr>
-	            				<td><textarea class="span12" rows="8" name="memberMessage"  placeholder="input your infomation">${order.memberMessage }</textarea></td>
+	            				<td><textarea class="form-control" rows="8" name="memberMessage"  placeholder="input your infomation">${order.memberMessage }</textarea></td>
 	            			</tr>
 	            			
 		            </tbody>

@@ -14,12 +14,12 @@
   <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
    			</div><!--/span2-->
-    		<div class="span8">
+    		<div class="col-lg-8">
     			<ul class="breadcrumb">
 		    		  <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; help</span></li>
 		    	</ul>

@@ -15,22 +15,14 @@
  <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-    		<div class="span2 offset1" >    		
-    		  <div class="well sidebar-nav">
-		            <ul class="nav nav-list">
-		              <li class="active"><a href="<%=basePath%>/member/toMyAccount">MyAccount</a></li>
-		              <li><a href="<%=basePath%>/order/toMyOrder">MyOrders</a></li>
-		              <c:if test="${!empty member }">
-		              <li><a href="<%=basePath%>/member/changePassword">Change Password</a></li>
-		              </c:if>
-		            </ul>
-          		</div><!--/.well -->              
-        </div><!--/span2-->
+    	<div class="col-lg-2 col-lg-offset-1" >  		
+    		  <%@include file="myAccount4Left.jsp" %>      
+         </div><!--/span2-->
 
-    	<div class="span8">
+    	<div class="col-lg-8">
 		  <ul class="breadcrumb">
 		      <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; My Orders</span></li>
 		  </ul>

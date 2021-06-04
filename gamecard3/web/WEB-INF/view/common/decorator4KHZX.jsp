@@ -49,7 +49,7 @@
 	</script>  
      <style type="text/css">      
       body {
-        padding-top: 60px;/*body距离顶部底部距离*/
+        //padding-top: 60px;/*body距离顶部底部距离*/
         padding-bottom: 40px;
       }      
     </style>
@@ -57,55 +57,50 @@
   </head>
   <body>
   
-
-    <!-- Head Body -->
-	 <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="<%=basePathforHead %>/index">N3DS-CARD</a>
-          <div class="nav-collapse collapse navbar-inverse-collapse">
-	            <ul class="nav">
-		            	<li><img src="<%=basePathforHead %>/assets/icos/product/logo.png"></li>
-		              	<li class="active"><a href="<%=basePathforHead %>/index">Home</a></li>
-		              	<li><a href="<%=basePathforHead%>/member/toMyAccount">
-		              			<c:if test="${!empty member}">
-									welcome！${member.lastName }&nbsp;${member.firstName }
-								</c:if></a>
-						</li>
-	            </ul>
-	            
-	            <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-               
-               
-                 <p class="navbar-text pull-right">
-                 		
-						<c:if test="${empty member}">
-							<a href="<%=basePathforHead %>/member/login" class="navbar-link">Sign in</a>&nbsp;&nbsp;
-							<a href="<%=basePathforHead %>/member/register" class="navbar-link">Register</a>&nbsp;&nbsp;
-						</c:if>
-						<a href="<%=basePathforHead %>/order/trackShipment" class="navbar-link">Track shipment</a>&nbsp;&nbsp;
-						<a href="<%=basePathforHead %>/product/toMyCart" class="navbar-link">MyCart</a>&nbsp;&nbsp;
-	               		<a href="<%=basePathforHead %>/order/toMyOrder" class="navbar-link">MyOrders</a>&nbsp;&nbsp;
-	               		<a href="<%=basePathforHead %>/member/toMyAccount" class="navbar-link">MyAccount</a>&nbsp;&nbsp;
-		               	<span id="cartItemsSun"></span>
-	               		
-		               	<c:if test="${!empty member}">
-		               		<a href="<%=basePathforHead %>/member/logout" class="navbar-link">Sign out</a>&nbsp;&nbsp;
-		               	</c:if>
-		                
-	            </p>
-	            <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-	            <div class="pull-right" style="padding-top:8px;" id="google_translate_element" ></div>
-               
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+	<!-- Head Body -->
+	<nav class="navbar navbar-default navbar-inverse" role="navigation">
+	 <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	      <span class="sr-only">Toggle navigation1</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="<%=basePathforHead %>/index">N3DS-CARD</a>
+	  </div>
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+		    <ul class="nav navbar-nav">
+				  <li><img src="<%=basePathforHead %>/assets/icos/product/logo.png"></li>
+				  <li class="active"><a href="<%=basePathforHead %>/index">Home</a></li>
+				  <li>
+				      <a href="<%=basePathforHead%>/member/toMyAccount">
+				          <c:if test="${!empty member}">welcome！${member.lastName }&nbsp;${member.firstName }</c:if>
+				      </a>
+				  </li>
+		    </ul>
+		    <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		               
+		               
+	        <p class="navbar-text pull-right">
+					<c:if test="${empty member}">
+						<a href="<%=basePathforHead %>/member/login" class="navbar-link">Sign in</a>&nbsp;&nbsp;
+						<a href="<%=basePathforHead %>/member/register" class="navbar-link">Register</a>&nbsp;&nbsp;
+					</c:if>
+					<a href="<%=basePathforHead %>/order/trackShipment" class="navbar-link">Track shipment</a>&nbsp;&nbsp;
+					<a href="<%=basePathforHead %>/product/toMyCart" class="navbar-link">MyCart</a>&nbsp;&nbsp;
+	           		<a href="<%=basePathforHead %>/order/toMyOrder" class="navbar-link">MyOrders</a>&nbsp;&nbsp;
+	           		<a href="<%=basePathforHead %>/member/toMyAccount" class="navbar-link">MyAccount</a>&nbsp;&nbsp;
+	            	<c:if test="${!empty member}">
+	            		<a href="<%=basePathforHead %>/member/logout" class="navbar-link">Sign out</a>&nbsp;&nbsp;
+	            	</c:if>
+	        </p>
+	        <p class="navbar-text pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	        <div class="pull-right" style="padding-top:8px;" id="google_translate_element" ></div>
+	    
+	  </div><!-- /.navbar-collapse -->
+	</nav>
+    
     <!-- Main Body -->
     <div>
       <sitemesh:write property='body'/>

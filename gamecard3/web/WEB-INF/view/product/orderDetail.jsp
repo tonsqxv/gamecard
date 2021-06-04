@@ -15,10 +15,9 @@
  <body>
   <%@include file="head.jsp" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1" >
 		    		<div class="well sidebar-nav">
 			            <ul class="nav nav-list">
 			              <li class="nav-header">Categories</li>
@@ -30,7 +29,7 @@
 		              
        		 </div><!--/span2-->
 
-    	<div class="span8">
+    	<div class="col-lg-8">
 
           <p><a href="home.html">Home</a>  &gt;&gt; Order Items</p>
           <hr> 
@@ -41,20 +40,20 @@
             <tbody>
               <tr>
                 <td colspan="12">
-                    <div class="row-fluid">
-                      <div class="span2">
+                    <div class="row">
+                      <div class="col-lg-2">
                          
                       </div>
-                      <div class="span4">
+                      <div class="col-lg-4">
                         Description
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                         Quantity
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                         Item Price
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                         Item Total
                       </div>
                     </div>  
@@ -63,30 +62,30 @@
               <c:forEach items="${orderDetailList }" var="orderDetail">
               <tr>
                 <td colspan="12">
-                    <div class="row-fluid">
-                      <div class="span2">
+                    <div class="row">
+                      <div class="col-lg-2">
                         <a href="#" onclick="javascript:window.open('<%=basePath %>/product/${orderDetail.productId}/productDetail');" class="thumbnail">
                           <img src="<%=basePath %>/assets/images/product/${orderDetail.mainImgPath}" width="130" height="130"/>
                         </a> 
                       </div>
-                      <div class="span4">
+                      <div class="col-lg-4">
                      	  <h6>&nbsp;</h6>
                       	  <a href="#" onclick="javascript:window.open('<%=basePath %>/product/${orderDetail.productId}/productDetail');">
                           ${orderDetail.productName}
                           </a>
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                       	  <h6>&nbsp;</h6>
                          ${orderDetail.amount}
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                       	 <h6>&nbsp;</h6>
                      	 <c:if test="${orderDetail.basePrice > orderDetail.unitPrice }">
 	                      		<del><h6>$${orderDetail.basePrice }</h6></del>
 	                     </c:if>
                         <strong ><font color="red">$${orderDetail.unitPrice}</font></strong>
                       </div>
-                      <div class="span2">
+                      <div class="col-lg-2">
                       	<h6>&nbsp;</h6>
                         <strong ><font color="red">$<span>${orderDetail.itemTotal}</span></font></strong>
                       </div>

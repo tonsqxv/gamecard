@@ -10,9 +10,9 @@
 %>  
  <h4>Customers Who Viewed This Product Also Viewed</h4>
           
-          <div class="row-fluid">
+          <div class="row">
 	           <c:forEach items="${customersLikes }" var="card">
-	          			<div class="span3">
+	          			<div class="col-lg-3">
 				              <a href="<%=basePath4footcustomerlike %>/product/${card.id}/productDetail" class="thumbnail">
 				                <img src="<%=basePath4footcustomerlike %>/assets/images/product/${card.mainImgPath}"/>
 				              </a>

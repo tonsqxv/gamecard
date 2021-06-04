@@ -20,12 +20,12 @@
     	</script>
     </c:if>
     
-    <div class="container-fluid">
-      <div class="row-fluid">
-    		<div class="span2 offset1" >
+    <div class="container">
+      <div class="row">
+    		<div class="col-lg-2 col-lg-offset-1">
    					<%@include file="left.jsp" %>
    			</div><!--/span2-->
-    		<div class="span8">
+    		<div class="col-lg-8">
     			  <ul class="breadcrumb">
 		    		  <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; Track Shipment</span></li>
 		    	  </ul>
@@ -39,9 +39,15 @@
 				  <br>
 				  <span id="search-help"></span>
 				  <form class="form-search">
-				  	   <label><b>Order Number:</b></label>
-					   <input type="text" id="orderNo" class="input-large">
-					   <img alt="" src="<%=basePath%>/assets/icos/product/btnSubmit.jpg" onclick="javascript:searchTackShipment();">
+				       <div class="row form-group">
+					          <span class="control-label col-lg-3"><b>Order Number:</b></span>
+				              <div class="col-lg-3">
+				              	<input class="form-control input-sm" type="text" id="orderNo">
+				              </div>
+				              <div class="col-lg-3">
+				              	<img alt="" src="<%=basePath%>/assets/icos/product/btnSubmit.jpg" onclick="javascript:searchTackShipment();">
+				              </div>
+				       </div>
 				  </form>
 			     
     		</div><!--/span8-->

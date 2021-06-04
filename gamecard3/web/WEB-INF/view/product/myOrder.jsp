@@ -15,23 +15,14 @@
  <body>
   <%@include file="head.jsp" %>
  		
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
 
-    		<div class="span2 offset1" >
-		    		<div class="well sidebar-nav">
-			            <ul class="nav nav-list">
-			              <li ><a href="<%=basePath%>/member/toMyAccount">MyAccount</a></li>
-			              <li class="active"><a href="<%=basePath%>/order/toMyOrder">MyOrders</a></li>
-			              <c:if test="${!empty member }">
-			              <li><a href="<%=basePath%>/member/changePassword">Change Password</a></li>
-			              </c:if>
-			            </ul>
-		          </div><!--/.well -->
-		              
+    		<div class="col-lg-2 col-lg-offset-1">  
+		    		<%@include file="myAccount4Left.jsp" %>
        		 </div><!--/span2-->
 
-    	<div class="span8">
+    	<div class="col-lg-8">
 	      <ul class="breadcrumb">
 		      <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; My Orders</span></li>
 		  </ul>
@@ -45,21 +36,21 @@
           <table class="table table-bordered table-condensed">
             <tbody>
               <tr>
-                <td colspan="12">
-                    <div class="row-fluid">
-	                      <div class="span2">
+                <td>
+                    <div class="row">
+	                      <div class="col-lg-2">
 	                         OrderNo
 	                      </div>
-	                       <div class="span4">
+	                       <div class="col-lg-4">
 	                         Items
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                        Price
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                        Status
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                       Operation
 	                      </div>
                     </div>  
@@ -69,16 +60,16 @@
              <c:forEach items="${orders }" var="order">
               <tr>
                 <td colspan="12">
-                    <div class="row-fluid">
-	                      <div class="span2">
+                    <div class="row">
+	                      <div class="col-lg-2">
 	                      		<h6>&nbsp;</h6>
 	                          <a href="#" onclick="javascript:window.open('<%=basePath%>/orderDetail/${order.id }/orderDetail');">${order.orderNo}</a>
 	                      		<p><fmt:formatDate value="${order.createTm}" pattern="MM/dd/yyyy" /></p> 
 	                      </div>
-	                      <div class="span4 row-fluid">
-	                      		<div class="span12">
+	                      <div class="col-lg-4">
+	                      		<div class="row">
 	                      		<c:forEach items="${order.orderDetails}"  var="orderDetail">
-	                      			<div class="span4">
+	                      			<div class="col-lg-4">
 				                          <a href="#" onclick="javascript:window.open('<%=basePath %>/product/${orderDetail.productId}/productDetail');"  class="thumbnail">
 				                          <img src="<%=basePath %>/assets/images/product/${orderDetail.mainImgPath}" alt="">
 				                          </a>  
@@ -86,7 +77,7 @@
 	                      		</c:forEach>
 	                      		</div>
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                      	<h6>&nbsp;</h6>
 	                      	<c:choose>
 	                      			<c:when test="${order.orderTotalPrice > order.discountTotalPrice }">
@@ -98,7 +89,7 @@
 	                      	</c:choose>
 	                        <strong ><font color="red">$${order.discountTotalPrice }</font></strong>
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                      	<h6>&nbsp;</h6>
 	                      	<c:choose>
 									<c:when test="${order.orderStatus == 1}">
@@ -139,7 +130,7 @@
 									</c:when>
 							</c:choose>
 	                      </div>
-	                      <div class="span2">
+	                      <div class="col-lg-2">
 	                      	<h6>&nbsp;</h6>
 	                        <c:choose>
 										<c:when test="${order.orderStatus==1}">
@@ -165,45 +156,46 @@
                 </td>
               </tr>
               </c:forEach>
-             
             </tbody>
           </table>
- 			<!--申请退款 弹出框 start-->
-         
-			  <div id="refundRequestWindow" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			      <div class="modal-header" style="background-color: #F2F2F2">
-			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			          <h3 id="myModalLabel" style="font-size:22px; height:30px; color:#cc6600;">Refund Request:</h3>
+          
+          
+		  <!--申请退款 弹出框 start-->
+			<div id="refundRequestWindow" class="modal fade">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title">Refund Request</h4>
 			      </div>
 			      <div class="modal-body">
-			      	<div>
-			      		<form id="redundApplyForm" action="<%=basePath %>/order/redundApply" method="post">
-         				<input type="hidden" id="orderId" name="id">
-				            <div class="span2 offset1">
-				            	<p class="text-left">Reason:</p>
-				            </div>
-				            <div class="span8"><p class="text-left">
-								<select class="span12" name="refundApplyReason" >
-					    			   <option value="">Select Reason</option>
-					                   <option value="1">order error</option>
-					                   <option value="2">others</option>
-				                 	</select>
-							 </div>
-							 <div class="span10 offset1">
-							 		<textarea class="span12" rows="6" name="refundApplyDesc" placeholder="input your infomation please!"></textarea>
-							 </div>
-						</form>
-          			</div>
-      			</div>
-		      <div class="modal-footer">
-		          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		          <button class="btn btn-warning" onclick="javascript:submitRefundRequestForm();">Sumbit</button>
-		          
-		      </div>
-  		</div>
-		<!-- end 申请退款 弹出框 -->
+				          <div class="row">
+					      		<form id="redundApplyForm" action="<%=basePath %>/order/redundApply" method="post">
+					      				<input type="hidden" id="orderId" name="id">
+						           
+						            <div class="col-lg-10 col-lg-offset-1"><p class="text-left">
+										<select class="form-control" name="refundApplyReason" >
+							    			   <option value="">Select Reason</option>
+							                   <option value="1">order error</option>
+							                   <option value="2">others</option>
+						                 	</select>
+									 </div>
+									 <div class="col-lg-10 col-lg-offset-1">
+									 		<textarea class="form-control" rows="6" name="refundApplyDesc" placeholder="input your infomation please!"></textarea>
+									 </div>
+								</form>
+				       	</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary" onclick="javascript:submitRefundRequestForm();">Sumbit</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		    <!-- end 申请退款 弹出框 -->
+    		
     		</div><!--/span8-->
-
       </div><!-- row-fluid -->
 
 
