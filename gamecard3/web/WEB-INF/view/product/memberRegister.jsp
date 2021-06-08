@@ -8,95 +8,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
     <script src="<%=basePath %>/assets/js/common/util.js"></script>
-	<style type="text/css">
-		#wrap1{
-		background-color: #F5F5F5;
-		}
-		
-		.font-strong{
-		color:red;
-		font-weight:bold;
-		font-family:"宋体";
-		}
-		 #stepol {list-style: none;}
-		.m_step{padding:20px 0px 40px 0px;}
-		.m_step li{float:left;}
-		.m_step li span{float:left;padding-left:54px;height:39px;background-image:url(<%=basePath %>/assets/icos/member/register/step_bg.png);background-repeat:no-repeat;background-position:0 -120px;color:#999;}
-		.m_step li.first span.finished{background-position:0 0;padding-left:43px;}
-		.m_step li.first span.finished{background-position:left 0;}
-		.m_step li span.finished{background-position:0 -300px;color:#333;}
-		.m_step li span.finished strong{background-position:right -60px;}
-		.m_step li strong{display:inline-block;*display:inline;*zoom:1;height:39px;padding-right:30px;background-image:url(<%=basePath %>/assets/icos/member/register/step_bg.png);background-repeat:no-repeat;background-position:right -180px;font:bold 13px/38px 'Microsfot Yahei';white-space:nowrap;}
-		.m_step li.last strong{background-position:right -240px;}
-		.m_step li.last span.finished strong{background-position:right -360px;}
-		.m_step li strong em{float:left;font-size:24px;margin:0 12px 0 -20px; font:normal 24px/36px Arial;position:relative;}
-		.m_step li .finished strong em{color:#ebb102;}
-		
-		.border-topdiv{
-		    
-		    background-color: #efefe;
-		    border-bottom: 1px solid #C6DCC6;
-		    border-top: 2px solid #68BB68;    
-		}
- 
-</style>
- <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=basePath %>/assets/icos/register/apple-touch-icon-144-precomposed.png">
-     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=basePath %>/assets/icos/register/apple-touch-icon-114-precomposed.png">
-  	 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=basePath %>/assets/icos/register/apple-touch-icon-72-precomposed.png">
-  	 <link rel="apple-touch-icon-precomposed" href="<%=basePath %>/assets/icos/register/apple-touch-icon-57-precomposed.png">
- 	 <link rel="shortcut icon" href="<%=basePath %>/assets/icos/register/favicon.png">
-  
+
   </head>
 
   <body >
-  <div class="container ">
-
- 	<div id="main_well" class="span9 offset2  well border-topdiv">
- 	<form id="memberRegisterForm" action="memberRegister" method="post"> 
- 		<input type="hidden" name="locked" value="0" />
-  		<div class="m_step">   
-            <ol id="stepol" ><li class="first"><span class="finished"><strong><em>1</em>base info</strong></span></li>
-            <li class="last"><span ><strong><em>2</em>finished register</strong></span></li>
-			</ol>
- 		</div>
-		 <div class="row">    
-		 		<span id="email-help" class="offset3 span5"></span>
-			    <span class="offset1 span2"><label><font color='red'>*</font>My e-mail:</label></span>
-			    <span class="span3"><input type="text" class="input-xlarge font-strong " maxlength="50" id="email"  name="email" /></span>
+  <div class="container">
+  
+  	<form id="memberRegisterForm" action="memberRegister" method="post"> 
+	<div class="panel panel-warning">
+		<div class="panel-heading">
+			type your base info
 		</div>
-		 <div class="row">    
-		 		<span id="password-help" class="offset3 span5"></span>
-			    <span class="offset1 span2"><label><font color='red'>*</font>Your password:</label></span>
-			    <span class="span3"><input id="password"  name="password" type="password" maxlength="50" class="input-xlarge font-strong"/></span>
-		</div>  
-		 <div class="row">    
-		 		<span id="repassword-help"   style="font-color:rgb(51, 165, 200)"  class="offset3 span5 "></span>
-			    <span class="offset1 span2"><label><font color='red'>*</font>Type it again:</label></span>
-			    <span class="span3"><input id="repassword"    type="password" maxlength="50" class="input-xlarge font-strong" /></span>
-		</div> 
-		<div class="row">  
-				<span id="firstName-help" class="offset3 span5 "></span>	
-			    <span class="offset1 span2"><label><font color='red'>*</font>First name:</label></span>
-			    <span class="span3"><input type="text" class="input-xlarge font-strong" maxlength="50" id="firstName" name="firstName" /></span>
-	    </div>
-	    <div class="row">  
-	    		<span id="lastName-help" class="offset3 span5 "></span>	 
-			    <span class="offset1 span2"><label><font color='red'>*</font>Last name:</label></span>
-			    <span class="span3"><input type="text" class="input-xlarge font-strong" maxlength="50" id="lastName" name="lastName"/></span>
-	    </div>
-	    <div class="row">  
-	    		<span id="phoneNumber-help" class="offset3 span5 "></span>	 
-			    <span class="offset1 span2"><label><font color='red'></font>Mobile phone (Optional):</label></span>
-			    <span class="span3"><input type="text" class="input-xlarge font-strong" maxlength="30" id="phoneNumber" name="phoneNumber"/></span>
-	    </div>
-		<div class="row"> 
-		  <span class="offset2 span1">&nbsp;</span><button type="button" onclick="verifySubmit()" class=" span3 btn btn-large btn-success "><strong>Register</strong></button>
-		 </div>
+		<div class="panel-body">
+			 <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">My e-mail<font color="red">&nbsp;*</font>:</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" type="text" maxlength="50" id="email"  name="email">
+		              </div>
+		              <span id="email-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">Your password<font color="red">&nbsp;*</font>:</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" id="password"  name="password" type="password" maxlength="50">
+		              </div>
+		              <span id="password-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">Type it again<font color="red">&nbsp;*</font>:</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" id="repassword" type="password" maxlength="50">
+		              </div>
+		              <span id="repassword-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">First name<font color="red">&nbsp;*</font>:</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" type="text" maxlength="50" id="firstName" name="firstName">
+		              </div>
+		              <span id="firstName-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">Last name<font color="red">&nbsp;*</font>:</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" type="text" maxlength="50" id="lastName" name="lastName">
+		              </div>
+		              <span id="lastName-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <span class="control-label col-lg-2 col-lg-offset-1">Mobile phone (Optional):</span>
+		              <div class="col-lg-3">
+		                 <input class="form-control input-sm" type="text" maxlength="30" id="phoneNumber" name="phoneNumber">
+		              </div>
+		              <span id="phoneNumber-help" class="col-lg-5"></span>
+		     </div>
+		     <div class="row form-group">
+		              <div class="col-lg-3 col-lg-offset-3">
+		                  <button class="btn btn-lg btn-primary btn-block" type="button" onclick="verifySubmit()">Register</button>
+		              </div>
+		     </div>
+		 </div><!-- end panel-body -->
+	</div>
 	</form>
- 	</div>
+
 </div>
  
   

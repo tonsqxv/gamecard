@@ -97,6 +97,7 @@ public class ProductAction {
 		if (productDetailTpl != null) {
 			returnUrl = "product/" + productDetailTpl;
 		}
+		System.out.println(returnUrl);
 		return returnUrl;
 	}
 

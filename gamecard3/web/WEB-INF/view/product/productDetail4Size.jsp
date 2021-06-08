@@ -29,8 +29,8 @@
 
     		<div class="col-lg-8">
 
-          <h2>${product.productName }</h2>
-          <hr>    		
+	         <h2>${product.productName }</h2>
+	         <hr>    		
     		  <div class="row">
               <div class="col-lg-4">
                 <div >

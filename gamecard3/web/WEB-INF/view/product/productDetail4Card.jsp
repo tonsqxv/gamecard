@@ -33,14 +33,14 @@
           <hr>    		
     		  <div class="row">
               <div class="col-lg-4">
-                <div >
+                <div class="row">
 					<a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class = 'cloud-zoom' id='zoom1'
 			              rel="adjustX: 10, adjustY:-4">
 			            <img src="<%=basePath %>/assets/images/product/${product.mainImgPath }" alt=''/>
 			        </a>
                 </div>
 	                
-                <div align="center">  
+                <div align="center" class="row">  
                   <div class="col-lg-2">
                       <a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class='cloud-zoom-gallery'
 			        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.mainImgPath }' ">

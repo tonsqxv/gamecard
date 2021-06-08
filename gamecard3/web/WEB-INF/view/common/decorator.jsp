@@ -107,18 +107,18 @@
     </div>
 
 	<!-- Foot Body -->
-    <div>
+    <div class="row navbar-static-bottom">
     	<hr/>
-    	<div class="text-center" >
+    	<div class="row" align="center">
     	<img alt="" src="<%=basePathforHead %>/assets/icos/product/bottomlogo1.jpg">
     	</div>
-	    <footer>
+	    <div class="row">
 	      <p class="text-center">All prices are in USD. &copy; Copyright 2013 n3ds-card.com. Sitemap | Powered by n3ds-card.com      
 	      <script src="http://s22.cnzz.com/stat.php?id=5536743&web_id=5536743&show=pic" language="JavaScript"></script></p>
 	      <!--  
 		  <script type='text/javascript' src='http://www3.365webcall.com/IMMe1.aspx?settings=mw7NNb7NNN670N7z3ANmmmbPz3ANmwIIwz3AN6mmP0&LL=1'></script>
 		  -->
-		  </footer>
+		  </div>
 	</div>
   </body>
 </html>

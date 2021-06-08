@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <h2 class="form-signin-heading">Please sign in</h2>
 		        <div><font color="red"><span id="error">${error}</span></font></div>
 		        <input id="email" class="form-control" type="text" name="email" maxlength="50" class="input-block-level" placeholder="email..." autofocus/>
+		        <br>
 		        <input id="password" class="form-control" type="password" name="password" maxlength="50" class="input-block-level" placeholder="password..."/>
 		        <label class="checkbox">
 		          <input type="checkbox" value="remember-me"> Remember me
