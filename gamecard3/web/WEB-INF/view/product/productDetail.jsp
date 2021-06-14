@@ -7,8 +7,8 @@
 	//获得项目完全路径（假设你的项目叫MyApp，那么获得到的地址就是 http://localhost:8080/MyApp/）:    
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
    
 	<!-- Load the Cloud Zoom CSS file -->
@@ -23,21 +23,20 @@
     <div class="container">
       <div class="row">
 
-    	  <div class="col-lg-2 col-lg-offset-1">
+    	  <div class="col-lg-3">
    					<%@include file="left.jsp" %>
    		  </div><!--/span2-->
 
-    	  <div class="col-lg-8">
+    	  <div class="col-lg-9">
 
           <h2>${product.productName }</h2>
           <hr>    		
     		 <div class="row">
               <div class="col-lg-4">
                 <div class="row">
-						<a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class = 'cloud-zoom' id='zoom1'
-			              rel="adjustX: 10, adjustY:-4">
-			            <img src="<%=basePath %>/assets/images/product/${product.mainImgPath }" alt=''/>
-			        </a>
+						<a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class = 'cloud-zoom' id='zoom1' rel="adjustX: 10, adjustY:-4">
+			            	<img src="<%=basePath %>/assets/images/product/${product.mainImgPath }" alt=''/>
+			        	</a>
                 </div>
 	                
                 <div class="row">  
@@ -45,7 +44,7 @@
                       <a href='<%=basePath %>/assets/images/product/${product.mainImgPath }' class='cloud-zoom-gallery'
 			        	rel="useZoom: 'zoom1', smallImage: '<%=basePath %>/assets/images/product/${product.mainImgPath }' ">
 			            <img src="<%=basePath %>/assets/images/product/${product.mainImgPath }"/>
-			          </a>  
+			          </a>
                   </div>
                  <c:if test="${!empty product.zoomImg1 }">
                  	<div class="col-lg-2">
@@ -87,6 +86,8 @@
 				        </a>    
                     </div> 
                  </c:if>   
+                 </div>
+                 <div class="row">
                   <c:if test="${!empty product.zoomImg6 }">
                  	 <div class="col-lg-2">
 	                 	<a href='<%=basePath %>/assets/images/product/${product.zoomImg6 }' class='cloud-zoom-gallery'

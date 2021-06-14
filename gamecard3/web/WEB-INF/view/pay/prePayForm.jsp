@@ -7,8 +7,8 @@
 	//获得项目完全路径（假设你的项目叫MyApp，那么获得到的地址就是 http://localhost:8080/MyApp/）:    
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <script src="<%=basePath %>/assets/js/common/util.js"></script>
   </head>
@@ -17,10 +17,10 @@
 
     <div class="container">
       <div class="row">
-    		<div class="col-lg-2 col-lg-offset-1">
+    		<div class="col-lg-3">
    					<%@include file="../product/left.jsp" %>
    			</div><!--/span2-->
-    		<div class="col-lg-8">
+    		<div class="col-lg-9">
 	    		 <ul class="breadcrumb">
 			          <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt;My Shopping cart</span></li>
 			     </ul>

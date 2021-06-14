@@ -13,8 +13,8 @@
 	DoExpressCheckoutPaymentResponseDetailsType responseDetails = (DoExpressCheckoutPaymentResponseDetailsType)request.getAttribute("responseDetails") ;
 
 %>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <title>PayPal JSP SDK - DoExpressCheckoutPayment API</title>
 <link href="<%=basePath %>/assets/css/product/pay/sdk.css" rel="stylesheet" type="text/css"/>

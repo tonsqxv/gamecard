@@ -79,13 +79,13 @@ public final class decorator4KHZX_jsp extends org.apache.jasper.runtime.HttpJspB
 	String basePathforHead = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath(); 
 
       out.write("\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
-      out.write("<html>\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html lang=\"en\">\n");
       out.write("<head>\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("<title>n3ds-card<sitemesh:write property='title'/></title>\n");
       out.write("\t<!-- n3ds-card  mobledeal -->\n");
-      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\" >\n");
       out.write("    <meta name=\"google-translate-customization\" content=\"1e73dcaa81aa4ac7-61a6e2a043015e7a-g53185def3341f4dc-11\"></meta>\n");
       out.write("   \n");
       out.write("    <!-- 自定义css -->\n");

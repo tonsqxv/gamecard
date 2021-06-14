@@ -9,8 +9,8 @@
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; 
 	
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html5/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
  <head>
 	
  <link href="<%=basePath %>/assets/css/page/page.css" rel="stylesheet">
@@ -24,13 +24,11 @@
     
     <div class="container">
       <div class="row">
-
-   		<div class="col-lg-2 col-lg-offset-1" >
+   		<div class="col-lg-3" >
    					<%@include file="left.jsp" %>
    		</div><!--/span2-->
    		
-   		
-    	<div class="col-lg-8">
+    	<div class="col-lg-9">
     		  <c:if test="${!empty dynimicProducts}">
 	          <!--轮换照片 begin-->
 	          <div id="myCarousel" class="carousel slide">

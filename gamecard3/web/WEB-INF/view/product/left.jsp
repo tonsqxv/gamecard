@@ -43,105 +43,108 @@
 		          
 		          <!-- 热门产品 -->
 		          <c:if test="${!empty hotProducts }">
-		          <div class="dropdown clearfix">
-		     		<ul class="dropdown-menu  nav nav-list  btn-block"  style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-		     			<h4 align="center">Hot Products</h4>
-		     			<li class="divider"></li>
-		     			<c:set var="hotProducts_index" value="1"></c:set>
-						<c:forEach items="${hotProducts }" var="card">
-						<c:if test="${hotProducts_index != (hotSize+1) }">
-							<div class="row-fluid">
-				              <div class="span5">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
-				                  <img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
-				                </a>
-				              </div><!--/span-->
-				              <div class="span7">
-				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
-				                <p>Sold:${card.sales+card.baseSales}</p>
-				              </div><!--/span-->
-				              <div class="span12 common">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
-				              </div><!--/span-->
-				            </div><!--/row-fluid-->
-				            <br>
-				        <c:set var="hotProducts_index" value="${hotProducts_index+1 }"></c:set>
-				        </c:if>    
-						</c:forEach>
-						<div>
-			              <p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=1">View More &gt;&gt;</a></p>
-			            </div>
-			          </ul>
-		          </div>
-		          </c:if>
-		          
-		           <!-- 最新产品 -->
+		          <div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Hot Products</h3>
+					  </div>
+					  <div class="panel-body">
+						  	<c:set var="hotProducts_index" value="1"></c:set>
+							<c:forEach items="${hotProducts }" var="card">
+							<c:if test="${hotProducts_index != (hotSize+1) }">
+							    <div class="row">
+							    	  <div class="col-lg-7">
+									    	<a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
+						                  		<img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
+						                   </a>
+							    	  </div>
+							    	  <div class="col-lg-5" align="left">
+							    	  		<p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
+				                			<p>Sold:${card.sales+card.baseSales}</p>
+							    	  </div>
+								</div>
+						        <div class="row">
+						              <p align="center" class="common"><a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a></p>
+						        </div>
+								<br>
+						   <c:set var="hotProducts_index" value="${hotProducts_index+1 }"></c:set>
+				       	   </c:if>    
+						   </c:forEach>
+						   <div class="row">
+			              		<p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=1">View More &gt;&gt;</a></p>
+			               </div>
+					  </div>
+				</div>
+				</c:if>
+
+ 				<!-- 新产品 -->
 		          <c:if test="${!empty newProducts }">
-		          <div class="dropdown clearfix">
-		     		<ul class="dropdown-menu  nav nav-list btn-block"  style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-		     			<h4 align="center">New Products</h4>
-		     			<li class="divider"></li>
-		     			<c:set var="newProducts_index" value="1"></c:set>
-						<c:forEach items="${newProducts }" var="card">
-						<c:if test="${newProducts_index != (newSize+1) }">
-							<div class="row-fluid">
-				              <div class="span5">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
-				                  <img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
-				                </a>
-				              </div><!--/span-->
-				              <div class="span7">
-				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
-				                <p>Sold:${card.sales+card.baseSales}</p>
-				              </div><!--/span-->
-				              <div class="span12 common">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
-				              </div><!--/span-->
-				            </div><!--/row-fluid-->
-				            <br>
-				        <c:set var="newProducts_index" value="${newProducts_index+1 }"></c:set>
-				        </c:if>    
-						</c:forEach>
-						<div>
-			              <p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=2">View More &gt;&gt;</a></p>
-			            </div>
-			         </ul>
-		          </div>
-		          </c:if>
-		          
-		          <!-- 特价商品 -->
+		          <div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">New Products</h3>
+					  </div>
+					  <div class="panel-body">
+						  	<c:set var="newProducts_index" value="1"></c:set>
+							<c:forEach items="${newProducts }" var="card">
+							<c:if test="${newProducts_index != (newSize+1) }">
+							    <div class="row">
+							    	  <div class="col-lg-7">
+									    	<a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
+						                  		<img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
+						                   </a>
+							    	  </div>
+							    	  <div class="col-lg-5" align="left">
+							    	  		<p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
+				                			<p>Sold:${card.sales+card.baseSales}</p>
+							    	  </div>
+								</div>
+						        <div class="row">
+						              <p align="center" class="common"><a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a></p>
+						        </div>
+								<br>
+						   <c:set var="newProducts_index" value="${newProducts_index+1 }"></c:set>
+				       	   </c:if>    
+						   </c:forEach>
+						   <div class="row">
+			              		<p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=2">View More &gt;&gt;</a></p>
+			               </div>
+					  </div>
+				</div>
+				</c:if>
+
+					<!-- 特价商品 -->
 		          <c:if test="${!empty discountProducts }">
-		          <div class="dropdown clearfix">
-		          	<ul class="dropdown-menu  nav nav-list btn-block"  style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-		     			<h4 align="center">Discount Products</h4>
-		     			<li class="divider"></li>
-		     			<c:set var="discountProducts_index" value="1"></c:set>
-						<c:forEach items="${discountProducts }" var="card">
-						<c:if test="${discountProducts_index != (discountSize+1) }">
-							<div class="row-fluid">
-				              <div class="span5">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
-				                  <img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
-				                </a>
-				              </div><!--/span-->
-				              <div class="span7">
-				                <p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
-				                <p>Sold:${card.sales+card.baseSales}</p>
-				              </div><!--/span-->
-				              <div class="span12 common">
-				                <a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a>
-				              </div><!--/span-->
-				            </div><!--/row-fluid-->
-				            <br>
-				        <c:set var="discountProducts_index" value="${discountProducts_index+1 }"></c:set>
-				        </c:if>    
-						</c:forEach>
-						<div>
-			              <p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=3">View More &gt;&gt;</a></p>
-			            </div>
-			         </ul>
-		          </div>
-		          </c:if>
+		          <div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Discount Products</h3>
+					  </div>
+					  <div class="panel-body">
+						  	<c:set var="discountProducts_index" value="1"></c:set>
+							<c:forEach items="${discountProducts }" var="card">
+							<c:if test="${discountProducts_index != (discountSize+1) }">
+							    <div class="row">
+							    	  <div class="col-lg-7">
+									    	<a href="<%=basePath4left %>/product/${card.id}/productDetail" class="thumbnail">
+						                  		<img src="<%=basePath4left %>/assets/images/product/${card.mainImgPath }"/>
+						                   </a>
+							    	  </div>
+							    	  <div class="col-lg-5" align="left">
+							    	  		<p><strong ><font color="red">$${card.actualSellPrice }</font></strong></p>
+				                			<p>Sold:${card.sales+card.baseSales}</p>
+							    	  </div>
+								</div>
+						        <div class="row">
+						              <p align="center" class="common"><a href="<%=basePath4left %>/product/${card.id}/productDetail" title="${card.productName }">${card.shortName }</a></p>
+						        </div>
+								<br>
+						   <c:set var="discountProducts_index" value="${discountProducts_index+1 }"></c:set>
+				       	   </c:if>    
+						   </c:forEach>
+						   <div class="row">
+			              		<p class="text-right"><a href="<%=basePath4left %>/product/viewMoreProduct?type=3">View More &gt;&gt;</a></p>
+			               </div>
+					  </div>
+				</div>
+				</c:if>
 		          
 		          
 		          

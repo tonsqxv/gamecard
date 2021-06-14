@@ -19,11 +19,11 @@
     <div class="container">
       <div class="row">
 
-    	<div class="col-lg-2 col-lg-offset-1">
+    	<div class="col-lg-3">
    					<%@include file="left.jsp" %>
    		</div><!--/span2-->
 
-    	<div class="col-lg-8">
+    	<div class="col-lg-9">
 		  <ul class="breadcrumb">
 		    		  <li><a href="<%=basePath %>/index">Home</a> <span class="divider">&gt;&gt; Your Shopping cart</span></li>
 		  </ul>

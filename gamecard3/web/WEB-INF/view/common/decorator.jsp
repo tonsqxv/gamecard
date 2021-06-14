@@ -7,13 +7,13 @@
 	//获得项目完全路径（假设你的项目叫MyApp，那么获得到的地址就是 http://localhost:8080/MyApp/）:    
 	String basePathforHead = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath(); 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>n3ds-card<sitemesh:write property='title'/></title>
 	<!-- n3ds-card  mobledeal -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="google-translate-customization" content="1e73dcaa81aa4ac7-61a6e2a043015e7a-g53185def3341f4dc-11"></meta>
    
     <!-- 自定义css -->
